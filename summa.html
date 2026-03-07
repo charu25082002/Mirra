@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Office Furniture – Product Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    body {
+      background: #f4f7fc;
+      padding: 20px;
+    }
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+      justify-content: center;
+    }
+    .category-buttons button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 40px;
+      background: #e9ecef;
+      color: #2c3e50;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .category-buttons button.selected {
+      background: #1e88e5;
+      color: white;
+      box-shadow: 0 4px 12px rgba(30,136,229,0.4);
+    }
+    .category-buttons button:hover {
+      background: #1565c0;
+      color: white;
+    }
+    .product-gallery {
+      display: none;
+      padding: 20px 0;
+    }
+    .product-gallery.visible {
+      display: block;
+    }
+
+    /* Grid layout for Office Chairs subcategories (2 rows, 3 columns) */
+    .subcategories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      align-items: start;
+    }
+
+    /* Each subcategory card */
+    .subcategory-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 20px 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .subcategory-title {
+      font-size: 1.5rem;
+      margin: 0 0 20px 0;
+      color: #1e2a3a;
+      border-left: 6px solid #1e88e5;
+      padding-left: 15px;
+    }
+
+    /* Gallery inside each subcategory (grid view shows 1 product) */
+    .sub-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: flex-start;
+      flex: 1;
+    }
+
+    /* "View more chairs" button (for grid mode) */
+    .view-more-btn {
+      background: #1e88e5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 20px 0 5px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 2px 8px rgba(30,136,229,0.3);
+      align-self: flex-start;
+    }
+    .view-more-btn:hover {
+      background: #1565c0;
+      transform: scale(1.02);
+    }
+    .view-more-btn:disabled {
+      background: #90a4ae;
+      cursor: default;
+      box-shadow: none;
+    }
+
+    /* Product card (no order button) */
+    .product-card {
+      flex: 0 0 calc(50% - 8px);  /* 2 cards per row inside subcategory */
+      max-width: calc(50% - 8px);
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+    .image-container {
+      width: 100%;
+      height: 150px;
+      background: #edf2f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .details-container {
+      padding: 12px;
+      flex-grow: 1;
+    }
+    .details-container h4 {
+      margin: 0;
+      color: #1e2a3a;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    /* Focused view (single subcategory expanded) */
+    .focused-category {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 30px 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+    }
+    .focused-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .back-btn {
+      background: #e9ecef;
+      border: none;
+      border-radius: 40px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1e2a3a;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .back-btn:hover {
+      background: #1e88e5;
+      color: white;
+    }
+    .focused-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .focused-gallery .product-card {
+      flex: 0 0 calc(25% - 15px);
+      max-width: calc(25% - 15px);
+    }
+
+    /* Simple gallery for other categories (4 per row) */
+    .simple-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .simple-gallery .product-card {
+      flex: 0 0 calc(25% - 15px);
+      max-width: calc(25% - 15px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .subcategories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .focused-gallery .product-card,
+      .simple-gallery .product-card {
+        flex: 0 0 calc(33.33% - 14px);
+        max-width: calc(33.33% - 14px);
+      }
+    }
+    @media (max-width: 768px) {
+      .subcategories-grid {
+        grid-template-columns: 1fr;
+      }
+      .focused-gallery .product-card,
+      .simple-gallery .product-card {
+        flex: 0 0 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+      }
+    }
+    @media (max-width: 480px) {
+      .focused-gallery .product-card,
+      .simple-gallery .product-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="category-buttons">
+  <button id="btn-chair1" class="selected" onclick="showCategory('category1', this)">Office Chairs</button>
+  <button id="btn-chair2" onclick="showCategory('category2', this)">Chairs with Writing Pad</button>
+  <button id="btn-chair3" onclick="showCategory('category3', this)">Work Station</button>
+  <button id="btn-chair4" onclick="showCategory('category4', this)">Steel Furniture</button>
+  <button id="btn-chair5" onclick="showCategory('category5', this)">Office Tables</button>
+  <button id="btn-chair6" onclick="showCategory('category6', this)">Discussion Tables</button>
+  <button id="btn-chair7" onclick="showCategory('category7', this)">Modular kitchen</button>
+  <button id="btn-chair8" onclick="showCategory('category8', this)">Spares</button>
+  <button id="btn-chair9" onclick="showCategory('category9', this)">Customer Review</button>
+</div>
+
+<!-- Category containers -->
+<div id="category1" class="product-gallery visible"></div>
+<div id="category2" class="product-gallery"></div>
+<div id="category3" class="product-gallery"></div>
+<div id="category4" class="product-gallery"></div>
+<div id="category5" class="product-gallery"></div>
+<div id="category6" class="product-gallery"></div>
+<div id="category7" class="product-gallery"></div>
+<div id="category8" class="product-gallery"></div>
+<div id="category9" class="product-gallery"></div>
+
+<script>
+  // ---------- PRODUCT DATA ----------
+  const subCategories = [
+    {
+      name: "Visitor Chairs",
+      products: [
+        "805 V", "JAZZ V", "GAMMA VISITOR", "NEW KNITTED VISITOR",
+        "IMPO MESH VISITOR", "SLIVER VISITOR", "PADMINI VISITOR",
+        "MAYOR VISITOR", "SHARP VISITOR", "803 I.O VISITOR"
+      ],
+      imageBase: "images/products/visitor/",
+      imageExt: ".JPG"
+    },
+    {
+      name: "Workstation Chairs",
+      products: [
+        "Ergo Mesh", "Executive High Back", "Mid Back Mesh",
+        "Knight Task Chair", "Operator Chair", "Drafting Stool"
+      ],
+      imageBase: "images/products/workstation/",
+      imageExt: ".JPG"
+    },
+    {
+      name: "Mesh High Back",
+      products: [
+        "Mesh High Back Black", "Mesh High Back Grey", "Mesh High Back Blue",
+        "Mesh High Back with Headrest", "Mesh High Back Executive"
+      ],
+      imageBase: "images/products/mesh_high/",
+      imageExt: ".JPG"
+    },
+    {
+      name: "Leather Chairs",
+      products: [
+        "Leather Executive", "Leather Mid Back", "Leather Visitor",
+        "Leather High Back", "Leather Guest Chair"
+      ],
+      imageBase: "images/products/leather/",
+      imageExt: ".JPG"
+    },
+    {
+      name: "Cafe Chairs",
+      products: [
+        "Wooden Cafe Chair", "Metal Cafe Chair", "Plastic Cafe Chair",
+        "Cafe Armchair", "Outdoor Cafe Chair"
+      ],
+      imageBase: "images/products/cafe/",
+      imageExt: ".JPG"
+    },
+    {
+      name: "Tandem Seating",
+      products: [
+        "2 Seater Tandem", "3 Seater Tandem", "4 Seater Tandem",
+        "Tandem with Armrest", "Tandem Without Armrest"
+      ],
+      imageBase: "images/products/tandem/",
+      imageExt: ".JPG"
+    }
+  ];
+
+  const otherCategories = {
+    category2: {
+      title: "Chairs with Writing Pad",
+      products: ["Pad Chair A", "Pad Chair B", "Pad Chair C", "Pad Chair D", "Pad Chair E"],
+      imageBase: "images/products/writing_pad/",
+      imageExt: ".JPG"
+    },
+    category3: {
+      title: "Work Station",
+      products: ["WS-1", "WS-2", "WS-3", "WS-4", "WS-5"],
+      imageBase: "images/products/workstation_full/",
+      imageExt: ".JPG"
+    },
+    category4: {
+      title: "Steel Furniture",
+      products: ["Steel Cabinet", "Steel Shelf", "Steel Locker", "Steel Rack", "Steel Table"],
+      imageBase: "images/products/steel/",
+      imageExt: ".JPG"
+    },
+    category5: {
+      title: "Office Tables",
+      products: ["Table A", "Table B", "Table C", "Table D", "Table E"],
+      imageBase: "images/products/tables/",
+      imageExt: ".JPG"
+    },
+    category6: {
+      title: "Discussion Tables",
+      products: ["Round Table", "Rectangular Table", "Small Table", "Large Table", "Glass Table"],
+      imageBase: "images/products/discussion/",
+      imageExt: ".JPG"
+    },
+    category7: {
+      title: "Modular kitchen",
+      products: ["Kitchen Set 1", "Kitchen Set 2", "Kitchen Set 3", "Kitchen Set 4"],
+      imageBase: "images/products/kitchen/",
+      imageExt: ".JPG"
+    },
+    category8: {
+      title: "Spares",
+      products: ["Castors", "Gas Lift", "Armrest", "Seat Foam", "Backrest"],
+      imageBase: "images/products/spares/",
+      imageExt: ".JPG"
+    },
+    category9: {
+      title: "Customer Review",
+      products: ["Review Item 1", "Review Item 2", "Review Item 3", "Review Item 4"],
+      imageBase: "images/products/reviews/",
+      imageExt: ".JPG"
+    }
+  };
+
+  // ---------- HELPER: create product card (no order button) ----------
+  function createProductCard(productName, imageUrl) {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+
+    const imgDiv = document.createElement('div');
+    imgDiv.className = 'image-container';
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.alt = productName;
+    img.loading = 'lazy';
+    img.onerror = function() { this.src = 'https://via.placeholder.com/300x200?text=Image+Not+Found'; };
+    imgDiv.appendChild(img);
+
+    const detailsDiv = document.createElement('div');
+    detailsDiv.className = 'details-container';
+    const h4 = document.createElement('h4');
+    h4.textContent = productName;
+    detailsDiv.appendChild(h4);
+
+    card.appendChild(imgDiv);
+    card.appendChild(detailsDiv);
+    return card;
+  }
+
+  // ---------- RENDER OFFICE CHAIRS (grid view: all subcategories, 1 product each) ----------
+  function renderOfficeChairsGrid() {
+    const container = document.getElementById('category1');
+    container.innerHTML = '';
+
+    const grid = document.createElement('div');
+    grid.className = 'subcategories-grid';
+    grid.id = 'office-chairs-grid';
+
+    subCategories.forEach((sub, idx) => {
+      const section = document.createElement('div');
+      section.className = 'subcategory-section';
+
+      const title = document.createElement('h3');
+      title.className = 'subcategory-title';
+      title.textContent = sub.name;
+      section.appendChild(title);
+
+      const gallery = document.createElement('div');
+      gallery.className = 'sub-gallery';
+
+      // Show only first product
+      const firstProduct = sub.products[0];
+      const imgUrl = `${sub.imageBase}1${sub.imageExt}`;
+      gallery.appendChild(createProductCard(firstProduct, imgUrl));
+
+      section.appendChild(gallery);
+
+      // "View more chairs" button – now triggers focus mode
+      const btn = document.createElement('button');
+      btn.className = 'view-more-btn';
+      btn.textContent = 'View more chairs';
+      btn.onclick = () => showFocusedSubcategory(idx);
+      section.appendChild(btn);
+
+      grid.appendChild(section);
+    });
+
+    container.appendChild(grid);
+  }
+
+  // ---------- RENDER FOCUSED SUBCATEGORY (all products, others hidden) ----------
+  function showFocusedSubcategory(index) {
+    const container = document.getElementById('category1');
+    const sub = subCategories[index];
+
+    container.innerHTML = ''; // clear grid
+
+    const focusedDiv = document.createElement('div');
+    focusedDiv.className = 'focused-category';
+
+    // Header with back button
+    const header = document.createElement('div');
+    header.className = 'focused-header';
+    const backBtn = document.createElement('button');
+    backBtn.className = 'back-btn';
+    backBtn.innerHTML = '← Back to all categories';
+    backBtn.onclick = () => renderOfficeChairsGrid();
+    const title = document.createElement('h2');
+    title.className = 'subcategory-title';
+    title.style.borderLeftColor = '#1e88e5';
+    title.textContent = sub.name;
+    header.appendChild(backBtn);
+    header.appendChild(title);
+    focusedDiv.appendChild(header);
+
+    // Gallery with all products
+    const gallery = document.createElement('div');
+    gallery.className = 'focused-gallery';
+    sub.products.forEach((prod, i) => {
+      const imgUrl = `${sub.imageBase}${i+1}${sub.imageExt}`;
+      gallery.appendChild(createProductCard(prod, imgUrl));
+    });
+    focusedDiv.appendChild(gallery);
+
+    container.appendChild(focusedDiv);
+  }
+
+  // ---------- RENDER SIMPLE CATEGORY (2-9) ----------
+  function renderSimpleCategory(categoryId) {
+    const container = document.getElementById(categoryId);
+    container.innerHTML = '';
+    const data = otherCategories[categoryId];
+    if (!data) return;
+
+    const title = document.createElement('h3');
+    title.className = 'subcategory-title';
+    title.textContent = data.title;
+    container.appendChild(title);
+
+    const gallery = document.createElement('div');
+    gallery.className = 'simple-gallery';
+
+    data.products.forEach((prod, idx) => {
+      const imgUrl = `${data.imageBase}${idx+1}${data.imageExt}`;
+      const card = createProductCard(prod, imgUrl);
+      gallery.appendChild(card);
+    });
+
+    container.appendChild(gallery);
+  }
+
+  // ---------- ORDER NOW (kept but unused) ----------
+  function orderNow(productName) {
+    const message = `Hi! I would like to order: ${productName}. Please provide details.`;
+    const whatsappURL = `https://wa.me/+919786690550?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+  }
+
+  // ---------- SHOW CATEGORY ----------
+  function showCategory(categoryId, btn) {
+    document.querySelectorAll('.product-gallery').forEach(g => g.classList.remove('visible'));
+    document.getElementById(categoryId).classList.add('visible');
+
+    document.querySelectorAll('.category-buttons button').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+
+    if (categoryId === 'category1') {
+      renderOfficeChairsGrid(); // always start with grid view
+    } else {
+      renderSimpleCategory(categoryId);
+    }
+  }
+
+  // Initial render
+  window.onload = () => {
+    renderOfficeChairsGrid();
+  };
+</script>
+
+<!-- 
+  Office Chairs behavior:
+  - Grid view shows all 6 subcategories in two rows, each with 1 product + "View more chairs".
+  - Clicking "View more chairs" for a subcategory hides the grid and shows only that subcategory with all its products.
+  - A "Back to all categories" button returns to the grid view.
+  All other categories remain simple galleries.
+-->
+</body>
+</html>

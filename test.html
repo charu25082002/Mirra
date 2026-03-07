@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>/* Header Base */
+.main-header {
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 15px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+/* Logo */
+.logo img {
+  max-height: 55px;
+}
+
+.logo .tagline {
+  display: block;
+  font-size: 13px;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* Navigation */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+  position: relative;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+  color: #4CAF50;
+}
+
+/* Orange Shape */
+.orange-shape {
+  position: absolute;
+  top: 0;
+  right: -80px;
+  width: 380px;
+  height: 100%;
+  background: linear-gradient(135deg, #ff7a18, #ff9f1c);
+  border-bottom-left-radius: 180px;
+  z-index: 1;
+}
+.orange-shape {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff7a18, #ff9f1c);
+  border-bottom-left-radius: 220px;
+  z-index: 1;
+}
+
+</style>
+<header class="main-header">
+  <div class="container header-flex">
+    
+    <!-- Logo -->
+    <div class="logo">
+      <img src="images/logo.png" alt="Sri Murra Furniture">
+      <span class="tagline">Your Furniture Destination</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li><a class="active" href="#">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">OUR PRODUCTS</a></li>
+        <li><a href="#">WHY WE</a></li>
+        <li><a href="#">CONTACT US</a></li>
+      </ul>
+    </nav>
+
+    <!-- Orange Shape -->
+    <div class="orange-shape"></div>
+
+  </div>
+</header>
+
+
+</body>
+</html>

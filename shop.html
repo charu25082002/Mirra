@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Digitf</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+ <style>
+  
+    .section-header h2 {
+      text-align: center;
+      font-size: 2rem;
+    }
+    .category-buttons {
+  text-align: center;
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: transparent; /* Remove background color */
+}
+
+.category-buttons button {
+  padding: 12px 25px;
+  margin: 12px 18px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  background-color: #d55c02; /* Gradient background */
+ /* Gradient background */
+  color: rgb(18, 18, 18);
+  border-radius: 30px; /* Rounded corners for a sleek look */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  font-weight: 600; /* Bold text */
+  min-width: 150px; /* Minimum width for buttons */
+}
+.cta-shop-now {
+  background-image: url(2f64e84182323bd7d062f2ff2f981c68.gif ) ; /* Replace with your background image */
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  background-image: repeating-linear-gradient();
+  height: 500px;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.cta-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+/* General Styles */
+.discount_section {
+  padding: 60px 0; /* Add top and bottom padding */
+  background-color: #f5f5f5; /* Light background color */
+}
+
+.discount_section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.discount_section .main_heading {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ea6303; /* The color for the main heading */
+  margin-bottom: 20px;
+}
+
+.discount_section .detail-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.discount_section a {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #ea6303; /* Button background color */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.discount_section a:hover {
+  background-color: #d55c02; /* Darker shade on hover */
+}
+
+/* New class names for image box */
+.discount_section .image-container {
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.discount_section .office-furniture-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+}.footer_section_with_bg {
+  background: url(pexels-pixabay-416320.jpg) no-repeat center center;
+  background-size: cover;
+  color: #e70101;
+  padding: 60px 0 30px;
+  position: relative;
+  font-family: 'Arial', sans-serif;
+}.footer_section_with_bg {
+  position: relative;
+  overflow: hidden;
+  color: #ef0b0b;
+  padding: 60px 0 30px;
+  font-family: 'Arial', sans-serif;
+  z-index: 1;
+}
+
+/* Pseudo element for blurred background */
+.footer_section_with_bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(images/dark-modern-office-illuminated-by-electric-lamp-free-photo.jpg) no-repeat center center;
+  background-size: cover;
+  filter: blur(1px); /* Adjust the blur strength here */
+  z-index: -1;
+}
+
+
+.footer_section_with_bg h5 {
+  color: #ffe600;
+  margin-bottom: 15px;
+}
+
+.footer_section_with_bg p,
+.footer_section_with_bg a {
+  color: #efecf5;
+}
+
+.footer_section_with_bg .social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.footer_section_with_bg .social-links li a {
+  color: #fff;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.footer_section_with_bg .social-links li a:hover {
+  color: #ffe600;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 30px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .discount_section .row {
+    display: flex;
+    flex-direction: column-reverse; /* Stack elements on smaller screens */
+    align-items: center; /* Align items to the center */
+  }
+
+  .discount_section .col-md-6 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .discount_section .main_heading {
+    font-size: 28px; /* Slightly smaller heading on smaller screens */
+  }
+
+  .discount_section a {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .discount_section .office-furniture-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Very small screens (mobile portrait) */
+@media (max-width: 576px) {
+  .discount_section .main_heading {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .discount_section a {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .discount_section .office-furniture-img {
+    border-radius: 5px;
+  }
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+/* Section styling */
+/* Contact Section */
+.contact_section {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.contact_section .heading_container h2 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+/* Contact Info Styling */
+.contact_info {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.reviews_section {
+  position: relative;
+  background-image: url('images/BGGG.jpg'); /* Set the background image */
+  background-size: cover; /* Make the background cover the entire section */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  padding: 60px 0; /* Add some padding for spacing */
+  color: #fff; /* Set text color to white or any color that stands out on the background */
+}
+
+/* Optional: Add a slight overlay to make text more readable */
+.reviews_section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* 50% transparent black overlay */
+  z-index: 1; /* Ensure overlay is below text content */
+}
+
+/* Content in the section should be above the overlay */
+.reviews_section .container {
+  position: relative;
+  z-index: 2; /* Ensure content appears above the overlay */
+}
+
+.reviews_section h2 {
+  color: #ea6303; /* Ensure heading text is visible */
+}
+
+.contact_info h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c0ce2;
+  margin-bottom: 15px;
+}
+
+.contact_info p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.contact_info strong {
+  font-weight: 600;
+}
+
+/* Map Section Styling */
+.map_container {
+  margin-top: 20px;
+}
+
+.map-responsive {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.map-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .contact_section .row {
+    flex-direction: column;
+  }
+
+  .contact_section .col-md-6 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .contact_info {
+    padding: 20px;
+  }
+
+  .contact_info h4 {
+    font-size: 18px;
+  }
+
+  .contact_info p {
+    font-size: 14px;
+  }
+}
+
+
+/* Map Container */
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .contact_section .row {
+    flex-direction: column;
+  }
+
+  .contact_section .col-md-6 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .contact_section form {
+    padding: 20px;
+  }
+
+  .contact_section input[type="text"],
+  .contact_section input[type="email"],
+  .contact_section .message-box {
+    font-size: 14px;
+  }
+
+  .contact_section button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+.cta-button {
+  background-color: #ff6f61;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #e45d53;
+}
+
+.category-buttons button:hover {
+  transform: translateY(-4px); /* Hover effect: slight lift */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  background: linear-gradient(45deg, #feb47b, #ff7e5f); /* Reverse gradient on hover */
+}
+
+.category-buttons .selected {
+  background: #333; /* Dark background for selected button */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Slightly darker shadow for selected button */
+}
+
+@media (max-width: 768px) {
+  .category-buttons {
+    justify-content: space-between;
+  }
+
+  .category-buttons button {
+    margin: 10px 8px; /* Smaller margins for tablets */
+    min-width: 120px; /* Slightly smaller button width on tablet */
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-buttons {
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    padding: 15px 0;
+  }
+
+  .category-buttons button {
+    min-width: 100%; /* Make buttons take full width on mobile */
+    margin: 10px 0; /* Reduced space between buttons */
+    font-size: 16px; /* Adjust font size */
+  }
+}
+
+    .product-gallery {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 55px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .product-gallery.visible {
+      display: flex;
+    }
+.img-box {
+    animation: moveChair 2s infinite alternate;
+}
+
+@keyframes moveChair {
+    0% {
+        transform: translateY(130px); /* Start position */
+    }
+    100% {
+        transform: translateX(0px); /* End position */
+    }
+}
+    .product-card {
+      width: 280px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px 2px 6px 2px;      background: #fafafa;
+      text-align: center;
+      padding-bottom: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+    .image-container img {
+      width: 260px;
+      height: 270px;
+      object-fit: cover;
+    }
+    .details-container h4 {
+      margin: 5px 0;
+      color: #2c0ce2;
+      font-size: 1.1rem;
+    }
+    .price-tag {
+      color: green;
+      font-weight: bold;
+    }
+.footer-section {
+  background-color: #eb3908;
+  color: #fff;
+  padding: 50px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-about,
+.footer-links,
+.footer-reviews,
+.footer-address {
+  width: 22%;
+  margin-bottom: 30px;
+}
+
+.footer-about h4,
+.footer-links h4,
+.footer-reviews h4,
+.footer-address h4 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #f39c12;
+}
+
+.footer-about p,
+.footer-links ul li a,
+.footer-reviews p,
+.footer-address p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.footer-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+  margin: 8px 0;
+  display: block;
+}
+
+.footer-links ul li a:hover {
+  color: #f39c12;
+}
+
+.footer-reviews a {
+  color: #f39c12;
+  text-decoration: none;
+}
+
+.footer-reviews a:hover {
+  text-decoration: underline;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #f39c12;
+}
+
+.footer-address p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+@media (max-width: 768px) {
+  .footer-about, .footer-links, .footer-reviews, .footer-address {
+    width: 48%;
+  }
+
+  .social-icons a {
+    font-size: 1.5rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* Footer Background and Layout */
+.info_section {
+  background-color: #333;
+  color: white;
+  padding: 50px 0;
+}
+
+.info_logo h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.info_section .row {
+  margin-bottom: 30px;
+}
+
+/* Footer Info Sections */
+.info_info, .quick-links-footer, .info_contact, .info_form {
+  margin-bottom: 20px;
+}
+
+.footer-links li {
+  list-style-type: none;
+}
+
+.footer-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links li a:hover {
+  color: #ff9800;  /* Hover color */
+}
+
+.social-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.social-links li {
+  margin-right: 15px;
+}
+
+.social-icon {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ff9800;  /* Hover color */
+}
+
+.social-icon i {
+  margin-right: 8px;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  background-color: #222;
+  color: white;
+  padding: 20px 0;
+}
+
+.footer-bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-text strong {
+  color: #ff9800;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .footer-bottom .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-links {
+    margin-bottom: 15px;
+  }
+}/* Footer Bottom Section */
+.footer-bottom {
+  background-color: #222;
+  color: white;
+  padding: 20px 0;
+}
+
+.footer-bottom .container {
+  display: flex;
+  justify-content: center; /* Centers the content horizontally */
+  align-items: center;
+  text-align: center;
+}
+
+.social-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Centers the icons */
+}
+
+.social-links li {
+  margin-right: 15px;
+}
+
+.social-icon {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ff9800;  /* Hover color */
+}
+
+.social-icon i {
+  margin-right: 8px;
+}
+
+
+    .order-button {
+      padding: 10px 18px;
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 5px;
+      color: #fff;
+      background-color: #ea6303; 
+      border: 2px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease-in-out;
+      display: inline-block;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); 
+    }
+
+    .order-button:hover {
+      background-color: #2a5298; 
+      border: 2px solid #2a5298; 
+      transform: translateY(-4px); 
+    }
+
+    .order-button:focus {
+      outline: none;
+    }
+
+    .order-button:active {
+      transform: translateY(0);
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); 
+    }.reviews_section {
+  background-color: #f4f4f4;
+  padding: 50px 0;
+}
+
+.reviews_section .heading_container h2 {
+  font-size: 2rem;
+  color: #fcfcfc;
+  margin-bottom: 40px;
+}
+
+.reviews-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.review-box {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.review-box:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.review-header .customer-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 15px;
+  box-shadow: #de1414;
+}.review-box {
+  width: 300px; /* Fixed width for each review box */
+  margin-right: 20px; /* Space between reviews */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  padding: 15px;
+  background-color: #e70698;
+  border-radius: 8px;
+  flex-shrink: 0; /* Prevent shrinking */
+  box-sizing: border-box; /* Include padding in width/height */
+}
+
+.reviews-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-size: 100% 100%  100% 100%; /* Stretch to fit both width and height */
+  background-position: center;
+  padding: 40px 0;
+}
+
+
+.review-header .customer-info h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.review-header .customer-info p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.rating {
+  margin-bottom: 15px;
+}
+#sec-2 .container {
+    box-shadow: 0 4px 8px rgba(223, 14, 14, 0.2);  /* X, Y, Blur Radius, Color */
+    padding: 20px;
+    border-radius: 8px;
+}#sec-2 .container {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Choose one of the above box-shadow options */
+    padding: 20px;
+    border-radius: 10px;  /* Optional: for rounded corners */
+}
+
+
+.star {
+  color: #ffd700; /* Gold color for filled stars */
+  font-size: 18px;
+}
+
+.star:hover {
+  color: #ff8c00; /* Orange color when hovered */
+}
+
+.review-text {
+  font-size: 1rem;
+  color: #f6f0f0;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+
+/* Responsive for Mobile Devices */
+@media (max-width: 768px) {
+  .reviews-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .review-box {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 30px;
+  }
+}
+
+
+  
+
+
+.about_section .heading_container h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.about_section p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.about_section a {
+  font-size: 1rem;
+  color: #fff;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+ #navbarSupportedContent {
+  transform: none;
+  opacity: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: static;
+  height: auto;
+}
+
+  </style>
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+   <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container" >
+          <a class="navbar-brand" href="index.html">
+            <img src="images/mirrafurniturewithshadow_logo2-removebg-preview.png " style="width: 200px; height: 90px;" alt="" />
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"> About</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html"> Our products </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="gallery.html"> Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact us</a>
+              </li>
+            </ul>
+           
+          </div>
+          <div>
+         
+          </div>
+
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+
+
+  <!-- brand section -->
+
+<div class="section-header" style="margin-top: 20px;">
+  <h2 style=" text-decoration: underline rgb(19, 139, 51); ">Elegant Chairs & Home Furnishings
+
+</h2>
+</div>
+
+<div class="category-buttons">
+  <button id="btn-chair1" class="selected" onclick="showCategory('category1', this)">Visitor Chairs</button>
+  <button id="btn-chair2" onclick="showCategory('category2', this)">Chairs with Writing Pad</button>
+  <button id="btn-chair3" onclick="showCategory('category3', this)">Work Station</button>
+  <button id="btn-chair4" onclick="showCategory('category4', this)">Steel Furniture</button>
+  <button id="btn-chair5" onclick="showCategory('category5', this)">Office Tables</button>
+  <button id="btn-chair6" onclick="showCategory('category6', this)">Discussion Tables</button>
+</div>
+
+
+  <!-- Category 1: Visitor Chairs -->
+  <div id="category1" class="product-gallery visible">
+    <script>
+      const visitorChairs = [
+        "805 V", "JAZZ V", "GAMMA VISITOR", "NEW KNITTED VISITOR", 
+        "IMPO MESH VISITOR", "SLIVER VISITOR", "PADMINI VISITOR", 
+        "MAYOR VISITOR", "SHARP VISITOR", "803 I.O VISITOR"
+      ];
+
+      visitorChairs.forEach((chair, index) => {
+        document.write(`
+          <div class="product-card">
+            <div class="image-container">
+              <img src="images/products/visitor%20(${index + 1}).JPG" alt="${chair}">
+            </div>
+            <div class="details-container">
+              <h4>${chair}</h4>
+            </div>
+            <button class="order-button" onclick="orderNow('${chair}')">Order Now</button>
+          </div>
+        `);
+      });
+
+      // Function to create the WhatsApp link for ordering
+      function orderNow(chairName) {
+        const message = `Hi! I would like to order the following chair: ${chairName}. Please provide more details.`;
+        const whatsappURL = `https://wa.me/9080356454?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+      }
+    </script>
+  </div>
+
+  <!-- Category 2: Chairs with Writing Pad -->
+  <div id="category2" class="product-gallery">
+    <script>
+      const writingPadChairs = [
+        "PERFO WRITING WITH MESH", "PADMINI WRITING PAD", "MATA FULL PAD", 
+        "MESH WRITING PAD", "GAMMA HALF WRITING PAD", "MAYOR HALF WRITING PAD"
+      ];
+
+      writingPadChairs.forEach((chair, index) => {
+        document.write(`
+          <div class="product-card">
+            <div class="image-container">
+              <img src="images/products/pad%20(${index + 1}).JPG" alt="${chair}">
+            </div>
+            <div class="details-container">
+              <h4>${chair}</h4>
+            </div>
+            <button class="order-button" onclick="orderNow('${chair}')">Order Now</button>
+          </div>
+        `);
+      });
+    </script>
+  </div>
+
+  <!-- Category 3: Work Station -->
+  <div id="category3" class="product-gallery">
+    <script>
+      const workstations = [
+        "LINEAR PILLAR TYPE", "LINEAR PARTICLE BOARD W/S", "4IN1 WORKSTATION", 
+        "LINEAR WORKSTATION", "4X2 CUBICLE"
+      ];
+
+      workstations.forEach((chair, index) => {
+        document.write(`
+          <div class="product-card">
+            <div class="image-container">
+              <img src="images/products/work%20(${index + 1}).JPG" alt="${chair}">
+            </div>
+            <div class="details-container">
+              <h4>${chair}</h4>
+            </div>
+            <button class="order-button" onclick="orderNow('${chair}')">Order Now</button>
+          </div>
+        `);
+      });
+    </script>
+  </div>
+
+  <!-- Category 4: Steel Furniture -->
+  <div id="category4" class="product-gallery">
+    <script>
+      const steelFurniture = [
+        "GLASS DOOR ALMIRAH", "STEEL EXECUTIVE TABLE 3D 1D 1C", "BOOK CASE", 
+        "4×2 1D 1C OFFICE TABLE", "PLAIN ALMIRAH", "PIGEON HOLE", 
+        "SLIDING GLASS CUPBOARD", "STEEL SLOTTED ANGLE", "FILING CABINET (opened)", 
+        "FILING CABINET (closed)"
+      ];
+
+      steelFurniture.forEach((item, index) => {
+        document.write(`
+          <div class="product-card">
+            <div class="image-container">
+              <img src="images/products/steel%20(${index + 1}).JPG" alt="${item}">
+            </div>
+            <div class="details-container">
+              <h4>${item}</h4>
+            </div>
+            <button class="order-button" onclick="orderNow('${item}')">Order Now</button>
+          </div>
+        `);
+      });
+
+      function orderNow(itemName) {
+        const message = `Hi! I would like to order the following item: ${itemName}. Please provide more details.`;
+        const whatsappURL = `https://wa.me/+919786690550?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+      }
+    </script>
+  </div>  <!-- Additional Categories for Office Tables & Discussion Tables -->
+
+  <script>
+    function showCategory(categoryId, btn) {
+      document.querySelectorAll('.product-gallery').forEach(div => {
+        div.classList.remove('visible');
+      });
+      document.querySelectorAll('.category-buttons button').forEach(button => {
+        button.classList.remove('selected');
+      });
+      document.getElementById(categoryId).classList.add('visible');
+      btn.classList.add('selected');
+    }
+  </script>
+<div id="category5" class="product-gallery">
+  <script>
+    const officeTables = [
+      "3×1.5 OFFICE TABLE", "4×2 OFFICE CUM COMPUTER TABLE", "TUBULAR OFFICE TABLE", 
+      "2×1.5 OFFICE TABLE"
+    ];
+
+    officeTables.forEach((item, index) => {
+      document.write(`
+        <div class="product-card">
+          <div class="image-container">
+            <img src="images/products/ofc%20(${index + 1}).JPG" alt="${item}">
+          </div>
+          <div class="details-container">
+            <h4>${item}</h4>
+            <button class="order-button" onclick="orderNow('${item}')">Order Now</button>
+          </div>
+        </div>
+      `);
+    });
+
+    // Function to create the WhatsApp link for ordering
+    function orderNow(itemName) {
+      const message = `Hi! I would like to order the following item: ${itemName}. Please provide more details.`;
+      const whatsappURL = `https://wa.me/+919786690550?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
+</div>
+<!-- Category 6: Discussion Tables -->
+<div id="category6" class="product-gallery">
+  <script>
+    // Array of items for your first section (Discussion Tables)
+    const discussionTables = [
+      "GLASS DISCUSSION TABLE 1", "CONFERENCE TABLE", "DT1",
+      "DT2", "CONFERENCE TABLE", "CONFERENCE TABLE",
+    ];
+
+    discussionTables.forEach((item, index) => {
+      document.write(`
+        <div class="product-card">
+          <div class="image-container">
+            <img src="images/products/meeting%20(${index + 1}).JPG" alt="${item}">
+          </div>
+          <div class="details-container">
+            <h4>${item}</h4>
+            <button class="order-button" onclick="orderNow('${item}')">Order Now</button>
+          </div>
+        </div>
+      `);
+    });
+
+    // Function to handle WhatsApp order
+    function orderNow(itemName) {
+      const message = `Hi! I would like to order the following item: ${itemName}. Please provide more details.`;
+      const whatsappURL = `https://wa.me/+919786690550?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
+</div>
+  <!-- end brand section -->
+
+
+
+<section class="footer_section_with_bg">
+  <div class="container">
+    <div class="row">
+      <!-- About Section -->
+      <div class="col-md-3 col-sm-6">
+        <h5>About Us</h5>
+        <p><strong>Mirra Furniture</strong> blends style, comfort, and durability. Perfect for home or office with quality you can trust.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-3 col-sm-6">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="shop.html">Products</a></li>
+          <li><a href="index.html#sec-2">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-3 col-sm-6">
+        <h5>Contact</h5>
+        <p>137, Sri Aurobindo Street,<br> Bharathi St Cutting,<br> Puducherry – 605001</p>
+        <p>Phone: <a href="tel:09843182927">98431 82927 <br>97866 90550</a></p>
+        <p>Email: <a href="mailto:srimirra@gmail.com">srimirra@gmail.com</a></p>
+      </div>
+
+      <!-- Social & Reviews -->
+      <div class="col-md-3 col-sm-6">
+        <h5>Google Reviews</h5>
+        <p>See what our customers say and leave your feedback!</p>
+        <a href="https://www.google.com/search?sca_esv=271f39430edfaf17&sxsrf=AE3TifO7O9cBRW1nBcTyo8BrbNEkgxILrg:1753698591148&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7bEv0ISdYXau6nbu6JeNhM3QfHcv_2qnXaNqdci3buTpXGVbGLNm4fiYEIYM9dc7KaV0y198idW6anm3IATLSlST-21T5KQik8HUsQieYoEDZSUucUuG77LXn_SOnJIR3Z_zdIMI4rZ3Z2-W0cEHnb_GZE1camD2E6-oMzVHV4tabz7cGXdOLPTOEMSrrdJ7bZUY_RkpuoaceLwuyO5_ybgRJWT9Sh2dq7S3ckprjxPigUP2g%3D%3D&q=SRI+MIRRA+FURNITURE+-+OFFICE+FURNITURE+%26+CHAIR+/+REVOLVING+CHAIR+/+WORKSTATION+CHAIRS+/+OFFICE+CHAIR+SERVICES+IN+PONDICHERRY+Reviews&sa=X&ved=2ahUKEwiS9MWsrN-OAxUdxjgGHXqZJsMQ0bkNegQIHhAD&cshid=1753698612915166&biw=1536&bih=730&dpr=1.25" target="_blank" class="btn btn-warning btn-sm">Leave a Review</a>
+        <ul class="social-links mt-3">
+          <li><a href="https://www.facebook.com/p/Sri-Mirra-Furniture-100083573582248/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="https://www.instagram.com/sri_mirra_furniture" target="_blank"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom-bar">
+      <p>© Developed by <a href="https://getitmediasolutions.com/" style="color: #ffe600;">GETIT MEDIA</a></p>
+    </div>
+  </div>
+</section>
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
+  </script>
+  <script type="text/javascript">
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [],
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        420: {
+          items: 2
+        },
+        1000: {
+          items: 5
+        }
+      }
+
+    });
+  </script>
+  <script>
+    var nav = $("#navbarSupportedContent");
+    var btn = $(".custom_menu-btn");
+    btn.click
+    btn.click(function (e) {
+
+      e.preventDefault();
+      nav.toggleClass("lg_nav-toggle");
+      document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
+    });
+  </script>
+  <script>
+    $('.carousel').on('slid.bs.carousel', function () {
+      $(".indicator-2 li").removeClass("active");
+      indicators = $(".carousel-indicators li.active").data("slide-to");
+      a = $(".indicator-2").find("[data-slide-to='" + indicators + "']").addClass("active");
+      console.log(indicators);
+
+    })
+  </script>
+
+</body>
+</body>
+
+</html>
