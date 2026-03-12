@@ -27,6 +27,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/product.css">
  <style>
   
     .section-header h2 {
@@ -125,9 +126,11 @@
   display: block;
   object-fit: cover;
   border-radius: 10px;
+
 }.footer_section_with_bg {
   background: url(pexels-pixabay-416320.jpg) no-repeat center center;
   background-size: cover;
+  margin-top: 40px;
   color: #e70101;
   padding: 60px 0 30px;
   position: relative;
@@ -955,18 +958,18 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
 </h2>
 </div>
 
-<div class="category-buttons">
+<!-- <div class="category-buttons">
   <button id="btn-chair1" class="selected" onclick="showCategory('category1', this)">Visitor Chairs</button>
   <button id="btn-chair2" onclick="showCategory('category2', this)">Chairs with Writing Pad</button>
   <button id="btn-chair3" onclick="showCategory('category3', this)">Work Station</button>
   <button id="btn-chair4" onclick="showCategory('category4', this)">Steel Furniture</button>
   <button id="btn-chair5" onclick="showCategory('category5', this)">Office Tables</button>
   <button id="btn-chair6" onclick="showCategory('category6', this)">Discussion Tables</button>
-</div>
+</div> -->
 
 
   <!-- Category 1: Visitor Chairs -->
-  <div id="category1" class="product-gallery visible">
+  <!-- <div id="category1" class="product-gallery visible">
     <script>
       const visitorChairs = [
         "805 V", "JAZZ V", "GAMMA VISITOR", "NEW KNITTED VISITOR", 
@@ -995,10 +998,10 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
         window.open(whatsappURL, '_blank');
       }
     </script>
-  </div>
+  </div> -->
 
   <!-- Category 2: Chairs with Writing Pad -->
-  <div id="category2" class="product-gallery">
+  <!-- <div id="category2" class="product-gallery">
     <script>
       const writingPadChairs = [
         "PERFO WRITING WITH MESH", "PADMINI WRITING PAD", "MATA FULL PAD", 
@@ -1019,10 +1022,10 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
         `);
       });
     </script>
-  </div>
+  </div> -->
 
   <!-- Category 3: Work Station -->
-  <div id="category3" class="product-gallery">
+  <!-- <div id="category3" class="product-gallery">
     <script>
       const workstations = [
         "LINEAR PILLAR TYPE", "LINEAR PARTICLE BOARD W/S", "4IN1 WORKSTATION", 
@@ -1043,10 +1046,10 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
         `);
       });
     </script>
-  </div>
+  </div> -->
 
   <!-- Category 4: Steel Furniture -->
-  <div id="category4" class="product-gallery">
+  <!-- <div id="category4" class="product-gallery">
     <script>
       const steelFurniture = [
         "GLASS DOOR ALMIRAH", "STEEL EXECUTIVE TABLE 3D 1D 1C", "BOOK CASE", 
@@ -1075,9 +1078,10 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
         window.open(whatsappURL, '_blank');
       }
     </script>
-  </div>  <!-- Additional Categories for Office Tables & Discussion Tables -->
+  </div>  -->
+   <!-- Additional Categories for Office Tables & Discussion Tables -->
 
-  <script>
+  <!-- <script>
     function showCategory(categoryId, btn) {
       document.querySelectorAll('.product-gallery').forEach(div => {
         div.classList.remove('visible');
@@ -1088,8 +1092,8 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
       document.getElementById(categoryId).classList.add('visible');
       btn.classList.add('selected');
     }
-  </script>
-<div id="category5" class="product-gallery">
+  </script> -->
+<!-- <div id="category5" class="product-gallery">
   <script>
     const officeTables = [
       "3×1.5 OFFICE TABLE", "4×2 OFFICE CUM COMPUTER TABLE", "TUBULAR OFFICE TABLE", 
@@ -1117,9 +1121,9 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
       window.open(whatsappURL, '_blank');
     }
   </script>
-</div>
+</div> -->
 <!-- Category 6: Discussion Tables -->
-<div id="category6" class="product-gallery">
+<!-- <div id="category6" class="product-gallery">
   <script>
     // Array of items for your first section (Discussion Tables)
     const discussionTables = [
@@ -1148,8 +1152,405 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
       window.open(whatsappURL, '_blank');
     }
   </script>
+</div> -->
+ 
+
+
+<!-- category buttons – each has a data-target attribute -->
+<div class="category-buttons">
+  <button class="btn active" data-target="main">Office Chairs</button>
+  <button class="btn" data-target="writingPadSection">Chairs with Writing Pad</button>
+  <button class="btn" data-target="workStationSection">Work Station</button>
+  <button class="btn" data-target="steelSection">Steel Furniture</button>
+  <button class="btn" data-target="officeTablesSection">Office Tables</button>
+  <button class="btn" data-target="discussionTablesSection">Discussion Tables</button>
+  <button class="btn" data-target="modularKitchenSection">Modular kitchen</button>
+  <button class="btn" data-target="sparesSection">Spares</button>
+  <button class="btn" data-target="auditoriumSeatingSection">Auditorium seating</button>
+  <button class="btn" data-target="customerReviewSection">Raised High Chairs</button>
 </div>
-  <!-- end brand section -->
+
+<!-- MAIN PRODUCTS (Office Chairs grid) -->
+<div class="products" id="mainProducts">
+  <!-- Visitor Chairs card -->
+  <div class="card" data-category="visitor">
+    <img src="./images/products/visitor (1).JPG" alt="Visitor Chairs">
+    <h3>Visitor Chairs</h3>
+    <button class="view-btn" data-target="visitorSection">View More Chairs</button>
+  </div>
+  <!-- Workstation Chairs card -->
+  <!-- <div class="card" data-category="workstation">
+    <img src="./images/All products/office Chairs/Workstation Chairs/1.jpeg" alt="Workstation Chairs">
+    <h3>Workstation Chairs</h3>
+    <button class="view-btn" data-target="workstationSection">View More Chairs</button>
+  </div> -->
+  <!-- Mesh High Back card -->
+  <div class="card" data-category="mesh">
+    <img src="./images/All products/office Chairs/Mesh High back/ad8b2475-fc65-415d-b35f-6a7f2fc59068.jpeg" alt="Mesh High Back">
+    <h3>Mesh High Back</h3>
+    <button class="view-btn" data-target="meshSection">View More Chairs</button>
+  </div>
+  <!-- Leather Chairs card -->
+  <div class="card" data-category="leather">
+    <img src="./images/All products/office Chairs/leather Chairs/c8b6d685-ca80-48a1-bd0a-387fa76e6c9e.jpeg" alt="Leather Chairs">
+    <h3>Leather Chairs</h3>
+    <button class="view-btn" data-target="leatherSection">View More Chairs</button>
+  </div>
+  <!-- Cafe Chairs card -->
+  <div class="card" data-category="cafe">
+    <img src="./images/All products/office Chairs/Cafe chairs/ecb28e85-c412-4c94-8cc8-feb0cc0151b0.jpeg" alt="Cafe Chairs">
+    <h3>Cafe Chairs</h3>
+    <button class="view-btn" data-target="cafeSection">View More Chairs</button>
+  </div>
+  <!-- Tandem Seating card -->
+  <div class="card" data-category="tandem">
+    <img src="./images/All products/office Chairs/Tandem Seating/Screenshot 2026-03-07 115448.png" alt="Tandem Seating">
+    <h3>Tandem Seating</h3>
+    <button class="view-btn" data-target="tandemSection">View More Chairs</button>
+  </div>
+</div>
+
+<!-- ========== EXISTING SUB‑CATEGORY SECTIONS (from View More buttons) ========== -->
+<div id="visitorSection" class="detail-section">
+  <h1 class="title">Visitor Chairs Collection</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/products/visitor (2).JPG" alt="Visitor 1"><h3>805 visitor</h3></div>
+    <div class="card"><img src="./images/products/visitor (3).JPG" alt="Visitor 2"><h3>Jazz visitor</h3></div>
+    <div class="card"><img src="./images/products/visitor (4).JPG" alt="Visitor 3"><h3>Gamma visitor</h3></div>
+    <div class="card"><img src="././images/products/visitor (5).JPG" alt="Visitor 4"><h3>Neo mesh visitor</h3></div>
+    <div class="card"><img src="./images/products/visitor (6).JPG" alt="Visitor 5"><h3>IO visitor</h3></div>
+    <div class="card"><img src="./images/products/visitor (7).JPG" alt="Visitor 6"><h3>Sliver visitor</h3></div>
+  </div>
+</div>
+<div id="workstationSection" class="detail-section">
+  <h1 class="title">Workstation Chairs Collection</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/1.jpeg" alt="Workstation 1"><h3>Ergo Task</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/2.jpeg" alt="Workstation 2"><h3>Mesh Task</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/3.jpeg" alt="Workstation 3"><h3>Executive Mesh</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/4.jpeg" alt="Workstation 4"><h3>Leather Task</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/5.jpeg" alt="Workstation 5"><h3>Drafting Chair</h3></div>
+    <!-- <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/5.jpeg" alt="Workstation 6"><h3>Stool Task</h3></div> -->
+  </div>
+</div>
+<div id="meshSection" class="detail-section">
+  <h1 class="title">Mesh High Back Collection</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/All products/office Chairs/Mesh High back/7bf5fdb3-9da2-4854-b914-9fe363be957b.jpeg" alt="Mesh 1"><h3>OPTIMA HB</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Mesh High back/ad8b2475-fc65-415d-b35f-6a7f2fc59068.jpeg" alt="Mesh 1"><h3>JAZZ HIGH BACK</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Mesh High back/c58bbee5-1fee-413e-a037-90b3d171948c.jpeg" alt="Mesh 1"><h3>BUTTERFLY HIGH BACK</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Mesh High back/e6b79518-afe4-4a8c-8fcc-d04f0c0e92d8.jpeg" alt="Mesh 1"><h3>MARVEL 2 HIGH BACK</h3></div>
+   
+  </div>
+</div>
+<div id="leatherSection" class="detail-section">
+  <h1 class="title">Leather Chairs Collection</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/All products/office Chairs/leather Chairs/188e44ce-7edf-434f-b5df-6e2719db664f.jpeg" alt="Leather 1"><h3>Executive Leather</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/leather Chairs/45d0fb80-06d7-42b6-8347-33e9fe21f15e.jpeg" alt="Leather 2"><h3>Boss Leather</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/leather Chairs/6db317c1-b366-4649-8d67-e598db0ad51b.jpeg" alt="Leather 3"><h3>Classic Brown</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/leather Chairs/88e04541-5f02-407a-8f7b-6a605b3ec2a2.jpeg" alt="Leather 4"><h3>Black Leather</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/leather Chairs/93fb0123-7f34-4da6-8556-2393db1b8b52.jpeg" alt="Leather 5"><h3>Vintage Leather</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/leather Chairs/c8b6d685-ca80-48a1-bd0a-387fa76e6c9e.jpeg" alt="Leather 6"><h3>Modern Leather</h3></div>
+  </div>
+</div>
+<div id="cafeSection" class="detail-section">
+  <h1 class="title">Cafe Chairs Collection</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/ecb28e85-c412-4c94-8cc8-feb0cc0151b0.jpeg" alt="Cafe 1"></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/382ea4ac-98c5-4c93-866f-5cab5325c301.jpeg" alt="Cafe 2"></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/5b85668d-0670-4d06-acf7-95b76c957060.jpeg" alt="Cafe 3"></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/5e6b562e-93eb-4f7c-9dac-c871dac58773.jpeg" alt="Cafe 4"></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/7440a5ec-2ccd-465a-99aa-686d58c76bea.jpeg" alt="Cafe 5"></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/a113dc94-befa-4c7b-a104-d9b9d15bd2a8.jpeg" alt="Cafe 6"></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/c2e56045-913d-4691-8502-c78f457c7fcf.jpeg" alt="Cafe 6"></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/cda323e6-ff83-4324-b563-0d16dae617c3.jpeg" alt="Cafe 6"></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/dc97fa2b-a3a5-4d6f-9bc1-61fd45d85e5f.jpeg" alt="Cafe 6"></div>
+  </div>
+</div>
+<div id="tandemSection" class="detail-section">
+  <h1 class="title">Tandem Seating Collection</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/Screenshot 2026-03-07 115448.png" alt="Tandem 1"><h3>3-Seat Tandem</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/Screenshot 2026-03-07 115532.png" alt="Tandem 2"><h3>3-Seat Tandem</h3></div>
+    <!-- <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/Screenshot 2026-03-07 115544.png" alt="Tandem 3"><h3>With Armrests</h3></div> -->
+    <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/image (1) (1).png" alt="Tandem 4"><h3>2-Seat Tandem</h3></div>
+    <!-- <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/Screenshot 2026-03-07 115532.png" alt="Tandem 5"><h3>Plastic Tandem</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/Screenshot 2026-03-07 115544.png" alt="Tandem 6"><h3>Metal Tandem</h3></div> -->
+  </div>
+</div>
+
+<!-- ========== NEW TOP‑LEVEL CATEGORY SECTIONS ========== -->
+<!-- Chairs with Writing Pad -->
+<div id="writingPadSection" class="detail-section">
+  <h1 class="title">Chairs with Writing Pad</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/products/pad (1).JPG" alt="Writing Pad 1"><h3>PERFO WRITING WITH MESH</h3></div>
+    <div class="card"><img src="./images/products/pad (2).JPG" alt="Writing Pad 2"><h3>PADMINI WRITING PAD</h3></div>
+    <div class="card"><img src="./images/products/pad (3).JPG" alt="Writing Pad 3"><h3>MATA FULL PAD</h3></div>
+    <div class="card"><img src="./images/products/pad (4).JPG" alt="Writing Pad 4"><h3>MESH WRITING PAD</h3></div>
+    <div class="card"><img src="./images/products/pad (5).JPG" alt="Writing Pad 5"><h3>GAMMA HALF WRITING PAD</h3></div>
+    <div class="card"><img src="./images/products/pad (6).JPG" alt="Writing Pad 6"><h3>MAYOR HALF WRITING PAD</h3></div>
+  </div>
+</div>
+<!-- Work Station -->
+<div id="workStationSection" class="detail-section">
+  <h1 class="title">Work Station Collection</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/products/work (1).JPG" alt="Workstation 1"><h3>LINEAR PILLAR TYPE</h3></div>
+    <div class="card"><img src="./images/products/work (2).JPG" alt="Workstation 2"><h3>LINEAR PARTICLE BOARD W/S</h3></div>
+    <div class="card"><img src="./images/products/work (3).JPG" alt="Workstation 3"><h3>4IN1 WORKSTATION</h3></div>
+    <div class="card"><img src="./images/products/work (4).JPG" alt="Workstation 4"><h3>LINEAR WORKSTATION</h3></div>
+    <div class="card"><img src="./images/products/work (5).JPG" alt="Workstation 5"><h3>4X2 CUBICLE</h3></div>
+    <!-- <div class="card"><img src="./images/products/work (6).JPG" alt="Workstation 6"><h3>Compact Station</h3></div> -->
+  </div>
+</div>
+<!-- Steel Furniture -->
+<div id="steelSection" class="detail-section">
+  <h1 class="title">Steel Furniture</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/products/steel (1).JPG" alt="Steel 1"><h3>GLASS DOOR ALMIRAH</h3></div>
+    <div class="card"><img src="./images/products/steel (2).JPG" alt="Steel 2"><h3>STEEL EXECUTIVE TABLE 3D 1D 1C</h3></div>
+    <div class="card"><img src="./images/products/steel (3).JPG" alt="Steel 3"><h3>BOOK CASE</h3></div>
+    <div class="card"><img src="./images/products/steel (4).JPG" alt="Steel 4"><h3>4×2 1D 1C OFFICE TABLE</h3></div>
+    <div class="card"><img src="./images/products/steel (5).JPG" alt="Steel 5"><h3>PLAIN ALMIRAH</h3></div>
+    <div class="card"><img src="./images/products/steel (6).JPG" alt="Steel 6"><h3>PIGEON HOLE</h3></div>
+    <div class="card"><img src="./images/products/steel (7).JPG" alt="Steel 7"><h3>SLIDING GLASS CUPBOARD</h3></div>
+    <div class="card"><img src="./images/products/steel (8).JPG" alt="Steel 8"><h3>STEEL SLOTTED ANGLE</h3></div>
+    <div class="card"><img src="./images/products/steel (9).JPG" alt="Steel 9"><h3>FILING CABINET (opened)</h3></div>
+    <div class="card"><img src="./images/products/steel (10).JPG" alt="Steel 10"><h3>FILING CABINET (closed)</h3></div>
+  </div>
+</div>
+<!-- Office Tables -->
+<div id="officeTablesSection" class="detail-section">
+  <h1 class="title">Office Tables</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/products/ofc (1).JPG" alt="Table 1"><h3>3×1.5 OFFICE TABLE</h3></div>
+    <div class="card"><img src="./images/products/ofc (2).JPG" alt="Table 2"><h3>4×2 OFFICE CUM COMPUTER TABLE</h3></div>
+    <div class="card"><img src="./images/products/ofc (3).JPG" alt="Table 3"><h3>TUBULAR OFFICE TABLE</h3></div>
+    <div class="card"><img src="./images/products/ofc (4).JPG" alt="Table 4"><h3>2×1.5 OFFICE TABLE</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0006969_acacia-computer-desk_360.webp" alt="Table 4"><h3>Acacia Computer Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0006975_acer-computer-desk_360.webp" alt="Table 4"><h3>Acer Computer Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0006981_adison-computer-table_360.webp" alt="Table 4"><h3>Adison Computer Table</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0006989_albany-desk_360.webp" alt="Table 4"><h3>Albany Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0006997_albion-computer-desk_360.webp" alt="Table 4"><h3>Albion Computer Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0006998_alcatal-reception-table_360.webp" alt="Table 4"><h3>Alcatal Reception Table
+</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007005_alder-work-desk_360.webp" alt="Table 4"><h3>Alder Work Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007012_alisma-computer-table_360.webp" alt="Table 4"><h3>Alisma Computer Table</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007014_alterton-computer-desk_360.webp" alt="Table 4"><h3>Alterton Computer Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007020_aspen-computer-desk_360.webp" alt="Table 4"><h3>Aspen Computer Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007025_aston-computer-desk_360.webp" alt="Table 4"><h3>Aston Computer Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007027_aura-decor-computer-table_360.webp" alt="Table 4"><h3>Aura Decor Computer Table</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007033_austin-computer-desk_360.webp" alt="Table 4"><h3>Austin Computer Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007034_blaster-computer-table_360.webp" alt="Table 4"><h3>Blaster Computer Table</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007040_boge-desk_360.webp" alt="Table 4"><h3>Boge Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007164_italia-classic-desk.webp" alt="Table 4"><h3>Italia Classic Desk</h3></div>
+    <div class="card"><img src="./images/All products/Office tables/0007195_office-star-working-desk.webp" alt="Table 4"><h3>Office Star Working Desk</h3></div>
+    <!-- <div class="card"><img src="./images/All products/Office tables/219f6f8a-b785-4997-9e98-6d1241aebd4b.jpeg" alt="Table 4"><h3>TABLE</h3></div> -->
+  
+    <!-- <div class="card"><img src="./images/products/ofc (5).JPG" alt="Table 5"><h3>Reception Desk</h3></div>
+    <div class="card"><img src="./images/products/ofc (6).JPG" alt="Table 6"><h3>Adjustable Desk</h3></div> -->
+  </div>
+</div>
+<!-- Discussion Tables -->
+<div id="discussionTablesSection" class="detail-section">
+  <h1 class="title">Discussion Tables</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/products/meeting (1).JPG" alt="Discussion 1"><h3>GLASS DISCUSSION TABLE 1</h3></div>
+    <div class="card"><img src="./images/products/meeting (2).JPG" alt="Discussion 2"><h3>CONFERENCE TABLE</h3></div>
+    <div class="card"><img src="./images/products/meeting (3).JPG" alt="Discussion 3"><h3>DT1</h3></div>
+    <div class="card"><img src="./images/products/meeting (4).JPG" alt="Discussion 4"><h3>DT2</h3></div>
+    <div class="card"><img src="./images/products/meeting (5).JPG" alt="Discussion 5"><h3>CONFERENCE TABLE</h3></div>
+    <div class="card"><img src="./images/products/meeting (6).JPG" alt="Discussion 6"><h3>CONFERENCE TABLE</h3></div>
+  </div>
+</div>
+<!-- Modular kitchen -->
+<div id="modularKitchenSection" class="detail-section">
+  <h1 class="title">Modular Kitchen</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/products/kitchan (1).jpeg" alt="Kitchen 1"></div>
+    <div class="card"><img src="./images/products/kitchan (2).jpeg" alt="Kitchen 2"></div>
+    <div class="card"><img src="./images/products/kitchan (3).jpeg" alt="Kitchen 3"></div>
+    <div class="card"><img src="./images/miraafurniture/gallery11.jpeg" alt="Kitchen 6"></div>
+    <div class="card"><img src="./images/miraafurniture/gallery4.jpeg" alt="Kitchen 5"></div>
+    <div class="card"><img src="./images/miraafurniture/gallery16.jpeg" alt="Kitchen 6"></div>
+  
+  </div>
+</div>
+
+<!-- Auditorium seating -->
+
+<div id="auditoriumSeatingSection" class="detail-section">
+
+  <h1 class="title">Auditorium Seating</h1>
+
+  <div class="back-btn-wrapper">
+    <button class="back-btn">← Back to All Categories</button>
+  </div>
+
+  <div class="products">
+
+    <div class="card">
+      <img src="./images/products/auditorium (1).jpeg" alt="Auditorium Seating 1">
+      <h3>Fixed Auditorium Seating</h3>
+    </div>
+
+    <div class="card">
+      <img src="./images/products/auditorium (2).jpeg" alt="Auditorium Seating 2">
+      <h3>Foldable Seating</h3>
+    </div>
+
+    <div class="card">
+      <img src="./images/products/auditorium (3).jpeg" alt="Auditorium Seating 3">
+      <h3>Push Back Seating</h3>
+    </div>
+
+    <div class="card">
+      <img src="./images/products/auditorium (4).jpeg" alt="Auditorium Seating 4">
+      <h3>VIP Theatre Seating</h3>
+    </div>
+
+    <div class="card">
+      <img src="./images/products/auditorium (5).jpeg" alt="Auditorium Seating 5">
+      <h3>Wood Finish Seating</h3>
+    </div>
+
+    <div class="card">
+      <img src="./images/products/auditorium (6).jpeg" alt="Auditorium Seating 6">
+      <h3>Luxury Recliner Seating</h3>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Spares -->
+<div id="sparesSection" class="detail-section">
+  <h1 class="title">Adjustable Handle Seriest</h1>
+    <!-- <h3>Adjustable Handle Seriest</h3> -->
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+
+    <div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/NEW-ADJUSTABLE-HANDLE.webp" alt="Spare 2"><h3>NEW ADJUSTABLE HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/OLA-HANDLE.webp" alt="Spare 2"><h3>OLA HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/OYO-HANDLE-WITH-3D-PAD.webp" alt="Spare 2"><h3>OYO HANDLE-WITH 3D</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/OYO-HANDLE.webp" alt="Spare 2"><h3>OYO HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/UNIQ-ADJUSTABLE-HANDLE.webp" alt="Spare 2"><h3>UNIQ ADJUSTABLE HANDLE -REGULAR</h3></div>
+
+</div>
+ <!-- <h3>Back & Seat Pu Foam Series</h3> -->
+       <h1 class="title">Back & Seat Pu Foam Series</h1>
+ <div class="products">
+    
+
+    <div class="card"><img src="./images/All products/Spares/Back & Seat Pu Foam Series/801-PU-FOAM.webp" alt="Spare 2"><h3>801 PU FOAM</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Back & Seat Pu Foam Series/802-PU-FOAM.webp" alt="Spare 2"><h3>802 PU FOAMt</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Back & Seat Pu Foam Series/803-PU-FOAM.webp" alt="Spare 2"><h3>803 PU FOAM</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Back & Seat Pu Foam Series/AUDITORIUM-BACK-PU.webp" alt="Spare 2"><h3>AUDITORIUM BACK PU</h3></div>
+</div>
+
+     <!-- <h3>Base Series</h3> -->
+        <h1 class="title">Base Series</h1>
+
+ <div class="products">
+    <div class="card"><img src="./images/All products/Spares/Base Series/NEW-NYLON-BASE.webp" alt="Spare 2"><h3>NEW-NYLON-BASE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Base Series/PENTA-BASE-26.webp" alt="Spare 2"><h3>PENTA-BASE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Base Series/SPIDER-BASE-26 (1).webp" alt="Spare 2"><h3>SPIDER-BASE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Base Series/STAR-BASE-26 (1).webp" alt="Spare 2"><h3>STAR-BASE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Base Series/STARK-BASE-26_-28_-INCH-HD-IMAGE-002-1.webp" alt="Spare 2"><h3>STARK-BASE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Base Series/TAURUS-BASE-BLACK.webp" alt="Spare 2"><h3>TAURUS-BASE-BLACK</h3></div>
+</div>
+
+
+   <!-- <h3>Fixed Handle Series</h3> -->
+  <h1 class="title">Fixed Handle Series</h1>
+
+ <div class="products">
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/CHOCH-HANDLE.webp" alt="Spare 2"><h3>CHOUNCH HANDLE-BIG</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/GODREJ-HANDLE.webp" alt="Spare 2"><h3>GODREJ HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/NOVEL-HANDLE-.webp" alt="Spare 2"><h3>NOVEL-HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/RF-HANDLE.webp" alt="Spare 2"><h3>RF-HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/SLICE-HANDLE.webp" alt="Spare 2"><h3>SLICE-HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/SWAN-HANDLE.webp" alt="Spare 2"><h3>SWAN-HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/T-HANDLE.webp" alt="Spare 2"><h3>T-HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/T-SONIC-HANDLE.webp" alt="Spare 2"><h3>T-SONIC-HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/TRIANGULAR-HANDLE.webp" alt="Spare 2"><h3>TRIANGULAR-HANDLE</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/XW-HANDLE-NEW.webp" alt="Spare 2"><h3>XW-HANDLE-NEW</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Fixed Handle Series/XW-HANDLE.webp" alt="Spare 2"><h3>XW-HANDLE</h3></div>
+    
+    
+  </div>
+
+
+
+
+
+   <!-- <br><br><h3>Pu Pad Series</h3><br><br> -->
+
+    <h1 class="title">Pu Pad Series</h1>
+
+    <div class="products">
+
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/070-CFL-PAD.webp" alt="Spare 2"><h3>076CFL(OLD)</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/ALTO-PAD.webp" alt="Spare 2"><h3>076CFLF-(FD PAD)FEDA</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/CRUSE-PAD.webp" alt="Spare 2"><h3>CRUSE PAD</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/D-PAD.webp" alt="Spare 2"><h3>D PAD</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/DOOM-PAD.webp" alt="Spare 2"><h3>DOOM PAD</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/FEDA-PAD.webp" alt="Spare 2"><h3>FEDA-PAD</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/GALAXY-1-PU-PAD-HD-PHOTO-008.webp" alt="Spare 2"><h3>GALAXY PU PAD 1</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/GALAXY-2-PU-PAD-HD-PHOTO-006.webp" alt="Spare 2"><h3>GALAXY PU PAD 2</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/GALAXY-3-PU-PAD-HD-PHOTO-006.webp" alt="Spare 2"><h3>GALAXY PU PAD 3</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/METRO-PAD-1.webp" alt="Spare 2"><h3>METRO PAD</h3></div>
+    <div class="card"><img src="./images/All products/Spares/Pu pad series/QUBE-PAD.webp" alt="Spare 2"><h3>QUBE PAD</h3></div>
+  </div>
+
+
+   <!-- <br><br><h3>Shell Series</h3><br><br> -->
+    <h1 class="title">Shell Series</h1>
+
+<div class="products">
+
+
+      <div class="card"><img src="./images/All products/Spares/Shell Series/BAR-STOOL (1).webp" alt="Spare 2"><h3>BAR SHELL</h3></div>
+      <div class="card"><img src="./images/All products/Spares/Shell Series/CENTURY-SHELL.webp" alt="Spare 2"><h3>CENTURY SHELL -BLACK</h3></div>
+      <div class="card"><img src="./images/All products/Spares/Shell Series/GAAMA-SHELL.webp" alt="Spare 2"><h3>GAMMA SEAT AND BACK</h3></div>
+      <div class="card"><img src="./images/All products/Spares/Shell Series/MEGHNA-SHELL.webp" alt="Spare 2"><h3>MEGHNA SHELL</h3></div>
+      <div class="card"><img src="./images/All products/Spares/Shell Series/PLASTIC-LEGS.webp" alt="Spare 2"><h3>AXIS & MARVEL SHELL LEG</h3></div>
+      <div class="card"><img src="./images/All products/Spares/Shell Series/BAR-STOOL.webp" alt="Spare 2"><h3>BAR STOOL</h3></div>
+  </div>
+
+</div>
+<!-- Customer Review -->
+<div id="customerReviewSection" class="detail-section">
+  <h1 class="title">Raised High Chairs</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/All products/raised height chairs/0882e3b1-4ae3-449b-b1e8-64b3d970c93c (1).jpeg" alt="Review 1"></h3></div>
+    <div class="card"><img src="./images/All products/raised height chairs/e7814fa2-f311-4c0b-8ce2-9bd2412a3210 (1).jpeg" alt="Review 2"></div>
+    <div class="card"><img src="./images/All products/raised height chairs/76ee61a4-a667-4f3f-824c-1f21c2f09e6f (1).jpeg" alt="Review 3"></div>
+    <div class="card"><img src="./images/All products/raised height chairs/25dbdee1-eaa0-47db-a2ed-929c990a9bc6.jpeg" alt="Review 4"></div>
+    <div class="card"><img src="./images/All products/raised height chairs/2c6fb6c2-c261-4f97-9981-c54ebe1ba700.jpeg" alt="Review 5"></div>
+    <div class="card"><img src="./images/All products/raised height chairs/84def0a3-cfae-404d-aa23-2a1b1d806c97.jpeg" alt="Review 6"></div>
+  </div>
+</div>
+
+<script src="./js/product.js"></script>
+
+
+<!-- end brand section -->
 
 
 
