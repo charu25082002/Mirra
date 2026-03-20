@@ -3310,6 +3310,8 @@ document.addEventListener('DOMContentLoaded', function() {
   <button class="btn" data-target="discussionTablesSection">Discussion Tables</button>
   <button class="btn" data-target="modularKitchenSection">Modular kitchen</button>
   <button class="btn" data-target="sparesSection">Spares</button>
+  <button class="btn" data-target="banquetHallSection">Banquet hall Furniture</button>
+  <button class="btn" data-target="mediumBackSection">Medium back series</button>
   <button class="btn" data-target="cafeSection">Cafe Chairs</button>
   <button class="btn" data-target="auditoriumSeatingSection">Auditorium seating</button>
   <button class="btn" data-target="institutionSection">Institution</button>
@@ -3367,6 +3369,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="card"><img src="././images/products/visitor (5).JPG" alt="Visitor 4"><h3>Neo mesh visitor</h3></div>
     <div class="card"><img src="./images/products/visitor (6).JPG" alt="Visitor 5"><h3>IO visitor</h3></div>
     <div class="card"><img src="./images/products/visitor (7).JPG" alt="Visitor 6"><h3>Sliver visitor</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Visitor chairs/376dc000-5ba6-4f4c-8b42-2a7d296c6ca5.jpeg" alt="Visitor 7"><h3>Mayor visitor</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Visitor chairs/7e2ac997-027e-4257-b3e4-184c4a5994a4.jpeg" alt="Visitor 6"><h3>Sharp visitor</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Visitor chairs/b205b27c-d707-4217-9a31-a54922d6c07e.jpeg" alt="Visitor 6"><h3>Padmini visitor</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Visitor chairs/ccf9bbe7-c4a2-4b3e-9905-bf058feef2f3.jpeg" alt="Visitor 6"><h3>803 I.O visitor</h3></div>
+    
   </div>
 </div>
 <div id="workstationSection" class="detail-section">
@@ -3389,6 +3396,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="card"><img src="./images/All products/office Chairs/Mesh High back/64092511-eb92-4df5-bf07-bd53d4b955d2.png" alt="Mesh 1"><h3>JAZZ HIGH BACK</h3></div>
     <div class="card"><img src="./images/All products/office Chairs/Mesh High back/7.jpeg" alt="Mesh 1"><h3>BUTTERFLY HIGH BACK</h3></div>
     <div class="card"><img src="./images/All products/office Chairs/Mesh High back/ac79a164-ff0b-4ec7-9b08-1d4b28ae64d9.png" alt="Mesh 1"><h3>MARVEL 2 HIGH BACK</h3></div>
+  
+    <div class="card"><img src="./images/All products/office Chairs/Mesh High back/406a243b-ec69-49c9-bc09-e2cd99e66aec.jpeg" alt="Mesh 1"><h3>Honda Mesh back</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Mesh High back/8.jpeg" alt="Mesh 1"><h3>Bonai High Back</h3></div>  
+    <div class="card"><img src="./images/All products/office Chairs/Mesh High back/Matrix.jpeg" alt="Mesh 1"><h3>Matrix High back</h3></div>
+  
    
   </div>
 </div>
@@ -3463,8 +3475,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="card"><img src="./images/products/work (2).JPG" alt="Workstation 2"><h3>LINEAR PARTICLE BOARD W/S</h3></div>
     <div class="card"><img src="./images/products/work (3).JPG" alt="Workstation 3"><h3>4IN1 WORKSTATION</h3></div>
     <div class="card"><img src="./images/products/work (4).JPG" alt="Workstation 4"><h3>LINEAR WORKSTATION</h3></div>
-    <div class="card"><img src="./images/products/work (5).JPG" alt="Workstation 5"><h3>4X2 CUBICLE</h3></div>
-    <!-- <div class="card"><img src="./images/products/work (6).JPG" alt="Workstation 6"><h3>Compact Station</h3></div> -->
+    <div class="card"><img src="./images/All products/work station/1.jpeg" alt="Workstation 5"><h3>Single</h3></div>
+    <div class="card"><img src="./images/All products/work station/2.jpeg" alt="Workstation 6"><h3>Back to back</h3></div>
+    <div class="card"><img src="./images/All products/work station/3.jpeg" alt="Workstation 7"><h3>Executive workstation</h3></div>
+    <div class="card"><img src="./images/All products/work station/4.jpeg" alt="Workstation 8"><h3>L shaped</h3></div>
   </div>
 </div>
 <!-- Steel Furniture -->
@@ -3482,10 +3496,175 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="card"><img src="./images/products/steel (8).JPG" alt="Steel 8"><h3>STEEL SLOTTED ANGLE</h3></div>
     <div class="card">
 
-  <div class="image-container">
-    <img src="./images/products/steel (9).JPG" class="img-default" alt="Filing Cabinet Open">
-    <img src="./images/products/steel (10).JPG" class="img-hover" alt="Filing Cabinet Closed">
+ <style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  padding: 40px;
+}
+
+/* GRID (optional) */
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ✅ YOUR CARD DESIGN */
+.card {
+  width: 280px; /* control width */
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  padding-bottom: 20px;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 370px; /* ✅ YOUR HEIGHT */
+  object-fit: contain;
+  background: #fff;
+  padding: 20px;
+}
+
+.card h3 {
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* 🔥 POPUP */
+.preview-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.preview-box {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 420px;
+  text-align: center;
+}
+
+/* CLOSE */
+.preview-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* BIG IMAGE */
+.preview-main {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+}
+
+/* SMALL IMAGES */
+.preview-images {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.preview-images img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+}
+
+.preview-images img:hover {
+  border: 2px solid orange;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card-container">
+
+  <!-- CARD -->
+  <div class="card" onclick="openPreview(
+    './images/products/steels (9).JPG',
+    './images/products/steels (9).JPG',
+    './images/products/steels (10).JPG'
+  )">
+    <img src="./images/products/steels (10).JPG">
+    <h3>Foldable round banquet hall table</h3>
   </div>
+
+</div>
+
+<!-- POPUP -->
+<div class="preview-overlay" id="preview">
+
+  <div class="preview-box">
+    
+    <span class="preview-close" onclick="closePreview()">×</span>
+
+    <!-- BIG IMAGE -->
+    <img id="mainImg" class="preview-main">
+
+    <!-- SMALL IMAGES -->
+    <div class="preview-images">
+      <img id="img1" onclick="changeImg(this.src)">
+      <img id="img2" onclick="changeImg(this.src)">
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function openPreview(main, img1, img2) {
+  document.getElementById("preview").style.display = "flex";
+
+  document.getElementById("mainImg").src = main;
+  document.getElementById("img1").src = img1;
+  document.getElementById("img2").src = img2;
+}
+
+function closePreview() {
+  document.getElementById("preview").style.display = "none";
+}
+
+function changeImg(src) {
+  document.getElementById("mainImg").src = src;
+}
+
+/* click outside to close */
+window.onclick = function(e) {
+  let modal = document.getElementById("preview");
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
   <h3>FILING CABINET</h3>
 
@@ -3519,10 +3698,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="card"><img src="./images/All products/Office tables/0007040_boge-desk_360.webp" alt="Table 4"><h3>Boge Desk</h3></div>
     <div class="card"><img src="./images/All products/Office tables/0007164_italia-classic-desk.webp" alt="Table 4"><h3>Italia Classic Desk</h3></div>
     <div class="card"><img src="./images/All products/Office tables/0007195_office-star-working-desk.webp" alt="Table 4"><h3>Office Star Working Desk</h3></div>
-    <!-- <div class="card"><img src="./images/All products/Office tables/219f6f8a-b785-4997-9e98-6d1241aebd4b.jpeg" alt="Table 4"><h3>TABLE</h3></div> -->
+    <div class="card"><img src="./images/All products/Office tables/1.jpeg" alt="Table 4"><h3>Laptop table</h3></div>
   
-    <!-- <div class="card"><img src="./images/products/ofc (5).JPG" alt="Table 5"><h3>Reception Desk</h3></div>
-    <div class="card"><img src="./images/products/ofc (6).JPG" alt="Table 6"><h3>Adjustable Desk</h3></div> -->
+    <div class="card"><img src="./images/All products/Office tables/2.jpeg" alt="Table 5"><h3> Laptop table with keyboard tray</h3></div>
+   
   </div>
 </div>
 <!-- Discussion Tables -->
@@ -3543,12 +3722,14 @@ document.addEventListener('DOMContentLoaded', function() {
   <h1 class="title">Modular Kitchen</h1>
   <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
   <div class="products">
-    <div class="card"><img src="./images/products/kitchan (1).jpeg" alt="Kitchen 1"></div>
-    <div class="card"><img src="./images/products/kitchan (2).jpeg" alt="Kitchen 2"></div>
-    <div class="card"><img src="./images/products/kitchan (3).jpeg" alt="Kitchen 3"></div>
-    <div class="card"><img src="./images/miraafurniture/gallery11.jpeg" alt="Kitchen 6"></div>
-    <div class="card"><img src="./images/miraafurniture/gallery4.jpeg" alt="Kitchen 5"></div>
-    <div class="card"><img src="./images/miraafurniture/gallery16.jpeg" alt="Kitchen 6"></div>
+    <div class="card"><img src="./images/All products/Modular kitchen/1.jpeg" alt="Kitchen 1"><h3>Island kitchen </h3></div>
+    <div class="card"><img src="./images/All products/Modular kitchen/2.jpeg" alt="Kitchen 2"><h3> L shaped kitchen</h3></div>
+    <div class="card"><img src="./images/All products/Modular kitchen/3.jpeg" alt="Kitchen 3"><h3>Parallel kitchen 1</h3></div>
+    <div class="card"><img src="./images/All products/Modular kitchen/4.jpeg" alt="Kitchen 4"><h3>Parallel kitchen 2</h3></div>
+    <div class="card"><img src="./images/All products/Modular kitchen/5.jpeg" alt="Kitchen 5"><h3>Parallel kitchen 3</h3></div>
+    <div class="card"><img src="./images/All products/Modular kitchen/6.jpeg" alt="Kitchen 6"><h3>Straight kitchen</h3></div>
+    <div class="card"><img src="./images/All products/Modular kitchen/7.jpeg" alt="Kitchen 7"><h3>U shaped 1</h3></div>
+    <div class="card"><img src="./images/All products/Modular kitchen/8.jpeg" alt="Kitchen 8"><h3>U shaped 2</h3></div>
   
   </div>
 </div>
@@ -3567,6 +3748,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/cda323e6-ff83-4324-b563-0d16dae617c3.jpeg" alt="Cafe 8"><h3>C8</h3></div>
     <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/dc97fa2b-a3a5-4d6f-9bc1-61fd45d85e5f.jpeg" alt="Cafe 9"><h3>C9</h3></div>
     <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/2.jpeg" alt="Cafe 7"><h3>C10</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/3.jpeg" alt="Cafe 7"><h3>C11</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/4.jpeg" alt="Cafe 7"><h3>C12</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/5.jpeg" alt="Cafe 7"><h3>C13</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/6.jpeg" alt="Cafe 7"><h3>C14</h3></div>
+    <div class="card"><img src="./images/All products/office Chairs/Cafe chairs/7.jpeg" alt="Cafe 7"><h3>C15</h3></div>
   </div>
 </div>
 <!-- Institution -->
@@ -3579,7 +3765,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="card"><img src="./images/All products/Institution/4fe99019-8cbe-4401-80bb-f4a4ca3a8180.png" alt="Workstation 3"><h3>SM 3</h3></div>
     <!-- <div class="card"><img src="./images/products/work (4).JPG" alt="Workstation 4"><h3>LINEAR WORKSTATION</h3></div>
     <div class="card"><img src="./images/products/work (5).JPG" alt="Workstation 5"><h3>4X2 CUBICLE</h3></div> -->
-    <!-- <div class="card"><img src="./images/products/work (6).JPG" alt="Workstation 6"><h3>Compact Station</h3></div> -->
+    <div class="card"><img src="./images/All products/Institution/1.jpeg" alt="Workstation 6"><h3>Flip training chair</h3></div>
   </div>
 </div>
 <!-- Auditorium seating -->
@@ -3628,7 +3814,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <!-- Spares -->
 <div id="sparesSection" class="detail-section">
-  <h1 class="title">Adjustable Handle Seriest</h1>
+  <h1 class="title">Adjustable Handle Series</h1>
     <!-- <h3>Adjustable Handle Seriest</h3> -->
   <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
   <div class="products">
@@ -3734,8 +3920,216 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="card"><img src="./images/All products/raised height chairs/2c6fb6c2-c261-4f97-9981-c54ebe1ba700.jpeg" alt="Review 5"><h3>R5</h3></div>
     <div class="card"><img src="./images/All products/raised height chairs/84def0a3-cfae-404d-aa23-2a1b1d806c97.jpeg" alt="Review 6"><h3>R6</h3></div>
     <div class="card"><img src="./images/All products/raised height chairs/1.jpeg" alt="Review 7"><h3>R7</h3></div>
+    <div class="card"><img src="./images/All products/raised height chairs/2.jpeg" alt="Review 8"><h3>R8</h3></div>
   </div>
 </div>
+<!-- medium back -->
+<div id="mediumBackSection" class="detail-section">
+  <h1 class="title">Medium Back Series</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+    <div class="card"><img src="./images/All products/Medium Back Series/11cb0629-7be8-4745-a6d3-3f815ae6dd2c.jpeg" alt="Discussion 1"><h3>802 IO</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/15da45d0-b1ce-45a4-9446-810c34658352.jpeg" alt="Discussion 1"><h3>Butterfly Medium Back</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/2bba37fa-32b1-40b0-8acc-120b76c701e8.jpeg" alt="Discussion 1"><h3>New Netted</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/30f1bc5a-1a56-4726-abba-e9226e3929e3.jpeg" alt="Discussion 1"><h3>Velfire medium back</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/311e4870-5bd5-40a3-9cf2-cf490d0a02a2.jpeg" alt="Discussion 1"><h3>X Mesh</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/4448bfec-0d0d-40e8-92fa-9cfba57acaaa.jpeg" alt="Discussion 1"><h3>Matrix High Back</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/51c9a700-b621-4f44-b073-b9078df05a71.jpeg" alt="Discussion 1"><h3>805 Mesh</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/55e6f298-cee9-4392-8862-b4fcd585ca4b.jpeg" alt="Discussion 1"><h3>804 Mesh</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/643c937e-6c37-40d5-b7a9-7476f33d1e5a.jpeg" alt="Discussion 1"><h3>803 Mesh</h3></div>
+   
+    <div class="card"><img src="./images/All products/Medium Back Series/939ef316-807a-43a3-9fa3-6ffc6ae79ebe.jpeg" alt="Discussion 1"><h3>1065</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/94adf2eb-0f11-4cc3-9975-e5daa3ed65fc.jpeg" alt="Discussion 1"><h3>Marvel 2 Medium Back</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/aa1cdb9c-fbc3-485b-b749-71ba970cba66.jpeg" alt="Discussion 1"><h3>Jazz Medium Back</h3></div>
+    <div class="card"><img src="./images/All products/Medium Back Series/f6c97e7e-7e2e-46f3-87cf-59bbc25819e3.jpeg" alt="Discussion 1"><h3>802 Mesh</h3></div>
+    
+  </div>
+</div>
+<!-- banquet hall -->
+<div id="banquetHallSection" class="detail-section">
+  <h1 class="title">Banquet Hall Furniture</h1>
+  <div class="back-btn-wrapper"><button class="back-btn">← Back to All Categories</button></div>
+  <div class="products">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  padding: 40px;
+}
+
+/* GRID (optional) */
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ✅ YOUR CARD DESIGN */
+.card {
+  width: 370px; /* control width */
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  padding-bottom: 20px;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 370px; /* ✅ YOUR HEIGHT */
+  object-fit: contain;
+  background: #fff;
+  padding: 20px;
+}
+
+.card h3 {
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* 🔥 POPUP */
+.preview-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.preview-box {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 420px;
+  text-align: center;
+}
+
+/* CLOSE */
+.preview-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* BIG IMAGE */
+.preview-main {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+}
+
+/* SMALL IMAGES */
+.preview-images {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.preview-images img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+}
+
+.preview-images img:hover {
+  border: 2px solid orange;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card-container">
+
+  <!-- CARD -->
+  <div class="card" onclick="openPreview(
+    './images/All products/banquet hall Furnitures/1.jpeg',
+    './images/All products/banquet hall Furnitures/1.jpeg',
+    './images/All products/banquet hall Furnitures/2.jpeg'
+  )">
+    <img src="./images/All products/banquet hall Furnitures/1.jpeg">
+    <h3>Foldable round banquet hall table</h3>
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div class="preview-overlay" id="preview">
+
+  <div class="preview-box">
+    
+    <span class="preview-close" onclick="closePreview()">×</span>
+
+    <!-- BIG IMAGE -->
+    <img id="mainImg" class="preview-main">
+
+    <!-- SMALL IMAGES -->
+    <div class="preview-images">
+      <img id="img1" onclick="changeImg(this.src)">
+      <img id="img2" onclick="changeImg(this.src)">
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function openPreview(main, img1, img2) {
+  document.getElementById("preview").style.display = "flex";
+
+  document.getElementById("mainImg").src = main;
+  document.getElementById("img1").src = img1;
+  document.getElementById("img2").src = img2;
+}
+
+function closePreview() {
+  document.getElementById("preview").style.display = "none";
+}
+
+function changeImg(src) {
+  document.getElementById("mainImg").src = src;
+}
+
+/* click outside to close */
+window.onclick = function(e) {
+  let modal = document.getElementById("preview");
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+  
+    <div class="card"><img src="./images/All products/banquet hall Furnitures/3.jpeg" alt="Banquet Hall 3"><h3>BQ 1
+</h3></div>
+    <div class="card"><img src="./images/All products/banquet hall Furnitures/4.jpeg" alt="Banquet Hall 4"><h3>BQ 2</h3></div>
+    <div class="card"><img src="./images/All products/banquet hall Furnitures/5.jpeg" alt="Banquet Hall 5"><h3>BQ 2 in rows</h3></div>
+    <div class="card"><img src="./images/All products/banquet hall Furnitures/6.jpeg" alt="Banquet Hall 6"><h3>BQ 2 stackable</h3></div>
+  </div>
+</div>
+
 <!-- ========== LIGHTBOX MODAL ========== -->
     <div id="imageModal" class="modal">
         <span class="close-btn">&times;</span>

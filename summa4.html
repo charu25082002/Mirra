@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Style Card</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  padding: 40px;
+}
+
+/* GRID (optional) */
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ✅ YOUR CARD DESIGN */
+.card {
+  width: 280px; /* control width */
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  padding-bottom: 20px;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 370px; /* ✅ YOUR HEIGHT */
+  object-fit: contain;
+  background: #fff;
+  padding: 20px;
+}
+
+.card h3 {
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* 🔥 POPUP */
+.preview-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.preview-box {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 420px;
+  text-align: center;
+}
+
+/* CLOSE */
+.preview-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* BIG IMAGE */
+.preview-main {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+}
+
+/* SMALL IMAGES */
+.preview-images {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.preview-images img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+}
+
+.preview-images img:hover {
+  border: 2px solid orange;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card-container">
+
+  <!-- CARD -->
+  <div class="card" onclick="openPreview(
+    './images/All products/banquet hall Furnitures/1.jpeg',
+    './images/All products/banquet hall Furnitures/1.jpeg',
+    './images/All products/banquet hall Furnitures/2.jpeg'
+  )">
+    <img src="./images/All products/banquet hall Furnitures/1.jpeg">
+    <h3>Foldable round banquet hall table</h3>
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div class="preview-overlay" id="preview">
+
+  <div class="preview-box">
+    
+    <span class="preview-close" onclick="closePreview()">×</span>
+
+    <!-- BIG IMAGE -->
+    <img id="mainImg" class="preview-main">
+
+    <!-- SMALL IMAGES -->
+    <div class="preview-images">
+      <img id="img1" onclick="changeImg(this.src)">
+      <img id="img2" onclick="changeImg(this.src)">
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function openPreview(main, img1, img2) {
+  document.getElementById("preview").style.display = "flex";
+
+  document.getElementById("mainImg").src = main;
+  document.getElementById("img1").src = img1;
+  document.getElementById("img2").src = img2;
+}
+
+function closePreview() {
+  document.getElementById("preview").style.display = "none";
+}
+
+function changeImg(src) {
+  document.getElementById("mainImg").src = src;
+}
+
+/* click outside to close */
+window.onclick = function(e) {
+  let modal = document.getElementById("preview");
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
