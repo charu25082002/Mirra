@@ -1,169 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chair Gallery</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    .section-header h2 {
-      text-align: center;
-      font-size: 2rem;
-    }
-    .category-buttons {
-      text-align: center;
-      margin: 40px 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .category-buttons button {
-      padding: 10px 15px;
-      margin: 0 8px;
-      cursor: pointer;
-      font-size: 16px;
-      border: 1px solid #333;
-      background: #fff;
-      transition: background-color 0.3s;
-      flex: 1 1 auto;
-      min-width: 150px;
-    }
-    .category-buttons button:hover {
-      background-color: #eee;
-    }
-    .category-buttons button.selected {
-      background-color: coral;
-      color: white;
-      border-color: coral;
-    }
-    .product-gallery {
-      display: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .product-gallery.visible {
-      display: flex;
-    }
-    .product-card {
-      width: 250px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-shadow: rgb(236, 97, 4) 0px 3px 3px 0px;
-      background: #fafafa;
-      text-align: center;
-      padding-bottom: 10px;
-      transition: transform 0.3s ease-in-out;
-    }
-    .product-card:hover {
-      transform: scale(1.05);
-    }
-    .image-container img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-    .details-container h4 {
-      margin: 5px 0;
-      color: #2c0ce2;
-      font-size: 1.1rem;
-    }
-    .price-tag {
-      color: green;
-      font-weight: bold;
-    }
-
-    .order-button {
-      padding: 10px 18px;
-      font-size: 10px;
-      font-weight: 600;
-      margin-top: 5px;
-      color: #fff;
-      background-color: #ea6303; 
-      border: 2px solid transparent;
-      border-radius: 10px;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease-in-out;
-      display: inline-block;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); 
-    }
-
-    .order-button:hover {
-      background-color: #2a5298; 
-      border: 2px solid #2a5298; 
-      transform: translateY(-4px); 
-    }
-
-    .order-button:focus {
-      outline: none;
-    }
-
-    .order-button:active {
-      transform: translateY(0);
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); 
-    }
-
-    @media (max-width: 768px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chair Gallery</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
       .section-header h2 {
-        font-size: 1.5rem;
+        text-align: center;
+        font-size: 2rem;
+      }
+      .category-buttons {
+        text-align: center;
+        margin: 40px 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
       }
       .category-buttons button {
-        font-size: 14px;
-        min-width: 120px;
+        padding: 10px 15px;
+        margin: 0 8px;
+        cursor: pointer;
+        font-size: 16px;
+        border: 1px solid #333;
+        background: #fff;
+        transition: background-color 0.3s;
+        flex: 1 1 auto;
+        min-width: 150px;
+      }
+      .category-buttons button:hover {
+        background-color: #eee;
+      }
+      .category-buttons button.selected {
+        background-color: coral;
+        color: white;
+        border-color: coral;
+      }
+      .product-gallery {
+        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .product-gallery.visible {
+        display: flex;
       }
       .product-card {
-        width: 200px;
+        width: 250px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-shadow: rgb(236, 97, 4) 0px 3px 3px 0px;
+        background: #fafafa;
+        text-align: center;
+        padding-bottom: 10px;
+        transition: transform 0.3s ease-in-out;
       }
-    }
-
-    @media (max-width: 480px) {
-      .section-header h2 {
-        font-size: 1.2rem;
+      .product-card:hover {
+        transform: scale(1.05);
       }
-      .category-buttons button {
-        font-size: 12px;
-        min-width: 100px;
+      .image-container img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
       }
-      .product-card {
-        width: 160px;
-        margin-bottom: 15px;
+      .details-container h4 {
+        margin: 5px 0;
+        color: #2c0ce2;
+        font-size: 1.1rem;
       }
-    }
-  </style>
-</head>
-<body>
+      .price-tag {
+        color: green;
+        font-weight: bold;
+      }
 
-  <div class="section-header">
-    <h2>Featured Chairs and Furniture Gallery</h2>
-  </div>
+      .order-button {
+        padding: 10px 18px;
+        font-size: 10px;
+        font-weight: 600;
+        margin-top: 5px;
+        color: #fff;
+        background-color: #b01736;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease-in-out;
+        display: inline-block;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      }
 
-  <div class="category-buttons">
-    <button id="btn-chair1" class="selected" onclick="showCategory('category1', this)">Office Chairs</button>
-    <button id="btn-chair2" onclick="showCategory('category2', this)">Chairs with Writing Pad</button>
-    <button id="btn-chair3" onclick="showCategory('category3', this)">Work Station</button>
-    <button id="btn-chair4" onclick="showCategory('category4', this)">Steel Furniture</button>
-    <button id="btn-chair5" onclick="showCategory('category5', this)">Office Tables</button>
-    <button id="btn-chair6" onclick="showCategory('category6', this)">Discussion Tables</button>
-  </div>
+      .order-button:hover {
+        background-color: #2a5298;
+        border: 2px solid #2a5298;
+        transform: translateY(-4px);
+      }
 
-  <!-- Category 1: Visitor Chairs -->
-  <div id="category1" class="product-gallery visible">
-    <script>
-      const visitorChairs = [
-        "805 V", "JAZZ V", "GAMMA VISITOR", "NEW KNITTED VISITOR", 
-        "IMPO MESH VISITOR", "SLIVER VISITOR", "PADMINI VISITOR", 
-        "MAYOR VISITOR", "SHARP VISITOR", "803 I.O VISITOR"
-      ];
+      .order-button:focus {
+        outline: none;
+      }
 
-      visitorChairs.forEach((chair, index) => {
-        document.write(`
+      .order-button:active {
+        transform: translateY(0);
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 768px) {
+        .section-header h2 {
+          font-size: 1.5rem;
+        }
+        .category-buttons button {
+          font-size: 14px;
+          min-width: 120px;
+        }
+        .product-card {
+          width: 200px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section-header h2 {
+          font-size: 1.2rem;
+        }
+        .category-buttons button {
+          font-size: 12px;
+          min-width: 100px;
+        }
+        .product-card {
+          width: 160px;
+          margin-bottom: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section-header">
+      <h2>Featured Chairs and Furniture Gallery</h2>
+    </div>
+
+    <div class="category-buttons">
+      <button
+        id="btn-chair1"
+        class="selected"
+        onclick="showCategory('category1', this)"
+      >
+        Office Chairs
+      </button>
+      <button id="btn-chair2" onclick="showCategory('category2', this)">
+        Chairs with Writing Pad
+      </button>
+      <button id="btn-chair3" onclick="showCategory('category3', this)">
+        Work Station
+      </button>
+      <button id="btn-chair4" onclick="showCategory('category4', this)">
+        Steel Furniture
+      </button>
+      <button id="btn-chair5" onclick="showCategory('category5', this)">
+        Office Tables
+      </button>
+      <button id="btn-chair6" onclick="showCategory('category6', this)">
+        Discussion Tables
+      </button>
+    </div>
+
+    <!-- Category 1: Visitor Chairs -->
+    <div id="category1" class="product-gallery visible">
+      <script>
+        const visitorChairs = [
+          "805 V",
+          "JAZZ V",
+          "GAMMA VISITOR",
+          "NEW KNITTED VISITOR",
+          "IMPO MESH VISITOR",
+          "SLIVER VISITOR",
+          "PADMINI VISITOR",
+          "MAYOR VISITOR",
+          "SHARP VISITOR",
+          "803 I.O VISITOR",
+        ];
+
+        visitorChairs.forEach((chair, index) => {
+          document.write(`
           <div class="product-card">
             <div class="image-container">
               <img src="images/products/visitor%20(${index + 1}).JPG" alt="${chair}">
@@ -174,27 +196,31 @@
             <button class="order-button" onclick="orderNow('${chair}')">Order Now</button>
           </div>
         `);
-      });
+        });
 
-      // Function to create the WhatsApp link for ordering
-      function orderNow(chairName) {
-        const message = `Hi! I would like to order the following chair: ${chairName}. Please provide more details.`;
-        const whatsappURL = `https://wa.me/9080356454?text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, '_blank');
-      }
-    </script>
-  </div>
+        // Function to create the WhatsApp link for ordering
+        function orderNow(chairName) {
+          const message = `Hi! I would like to order the following chair: ${chairName}. Please provide more details.`;
+          const whatsappURL = `https://wa.me/9080356454?text=${encodeURIComponent(message)}`;
+          window.open(whatsappURL, "_blank");
+        }
+      </script>
+    </div>
 
-  <!-- Category 2: Chairs with Writing Pad -->
-  <div id="category2" class="product-gallery">
-    <script>
-      const writingPadChairs = [
-        "PERFO WRITING WITH MESH", "PADMINI WRITING PAD", "MATA FULL PAD", 
-        "MESH WRITING PAD", "GAMMA HALF WRITING PAD", "MAYOR HALF WRITING PAD"
-      ];
+    <!-- Category 2: Chairs with Writing Pad -->
+    <div id="category2" class="product-gallery">
+      <script>
+        const writingPadChairs = [
+          "PERFO WRITING WITH MESH",
+          "PADMINI WRITING PAD",
+          "MATA FULL PAD",
+          "MESH WRITING PAD",
+          "GAMMA HALF WRITING PAD",
+          "MAYOR HALF WRITING PAD",
+        ];
 
-      writingPadChairs.forEach((chair, index) => {
-        document.write(`
+        writingPadChairs.forEach((chair, index) => {
+          document.write(`
           <div class="product-card">
             <div class="image-container">
               <img src="images/products/pad%20(${index + 1}).JPG" alt="${chair}">
@@ -205,20 +231,23 @@
             <button class="order-button" onclick="orderNow('${chair}')">Order Now</button>
           </div>
         `);
-      });
-    </script>
-  </div>
+        });
+      </script>
+    </div>
 
-  <!-- Category 3: Work Station -->
-  <div id="category3" class="product-gallery">
-    <script>
-      const workstations = [
-        "LINEAR PILLAR TYPE", "LINEAR PARTICLE BOARD W/S", "4IN1 WORKSTATION", 
-        "LINEAR WORKSTATION", "4X2 CUBICLE"
-      ];
+    <!-- Category 3: Work Station -->
+    <div id="category3" class="product-gallery">
+      <script>
+        const workstations = [
+          "LINEAR PILLAR TYPE",
+          "LINEAR PARTICLE BOARD W/S",
+          "4IN1 WORKSTATION",
+          "LINEAR WORKSTATION",
+          "4X2 CUBICLE",
+        ];
 
-      workstations.forEach((chair, index) => {
-        document.write(`
+        workstations.forEach((chair, index) => {
+          document.write(`
           <div class="product-card">
             <div class="image-container">
               <img src="images/products/work%20(${index + 1}).JPG" alt="${chair}">
@@ -229,22 +258,28 @@
             <button class="order-button" onclick="orderNow('${chair}')">Order Now</button>
           </div>
         `);
-      });
-    </script>
-  </div>
+        });
+      </script>
+    </div>
 
-  <!-- Category 4: Steel Furniture -->
-  <div id="category4" class="product-gallery">
-    <script>
-      const steelFurniture = [
-        "GLASS DOOR ALMIRAH", "STEEL EXECUTIVE TABLE 3D 1D 1C", "BOOK CASE", 
-        "4×2 1D 1C OFFICE TABLE", "PLAIN ALMIRAH", "PIGEON HOLE", 
-        "SLIDING GLASS CUPBOARD", "STEEL SLOTTED ANGLE", "FILING CABINET (opened)", 
-        "FILING CABINET (closed)"
-      ];
+    <!-- Category 4: Steel Furniture -->
+    <div id="category4" class="product-gallery">
+      <script>
+        const steelFurniture = [
+          "GLASS DOOR ALMIRAH",
+          "STEEL EXECUTIVE TABLE 3D 1D 1C",
+          "BOOK CASE",
+          "4×2 1D 1C OFFICE TABLE",
+          "PLAIN ALMIRAH",
+          "PIGEON HOLE",
+          "SLIDING GLASS CUPBOARD",
+          "STEEL SLOTTED ANGLE",
+          "FILING CABINET (opened)",
+          "FILING CABINET (closed)",
+        ];
 
-      steelFurniture.forEach((item, index) => {
-        document.write(`
+        steelFurniture.forEach((item, index) => {
+          document.write(`
           <div class="product-card">
             <div class="image-container">
               <img src="images/products/steel%20(${index + 1}).JPG" alt="${item}">
@@ -255,25 +290,27 @@
             <button class="order-button" onclick="orderNow('${item}')">Order Now</button>
           </div>
         `);
-      });
+        });
 
-      function orderNow(itemName) {
-        const message = `Hi! I would like to order the following item: ${itemName}. Please provide more details.`;
-        const whatsappURL = `https://wa.me/your-whatsapp-number?text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, '_blank');
-      }
-    </script>
-  </div>
-<!-- Category 5: Office Tables -->
-<div id="category5" class="product-gallery">
-  <script>
-    const officeTables = [
-      "3×1.5 OFFICE TABLE", "4×2 OFFICE CUM COMPUTER TABLE", "TUBULAR OFFICE TABLE", 
-      "2×1.5 OFFICE TABLE"
-    ];
+        function orderNow(itemName) {
+          const message = `Hi! I would like to order the following item: ${itemName}. Please provide more details.`;
+          const whatsappURL = `https://wa.me/your-whatsapp-number?text=${encodeURIComponent(message)}`;
+          window.open(whatsappURL, "_blank");
+        }
+      </script>
+    </div>
+    <!-- Category 5: Office Tables -->
+    <div id="category5" class="product-gallery">
+      <script>
+        const officeTables = [
+          "3×1.5 OFFICE TABLE",
+          "4×2 OFFICE CUM COMPUTER TABLE",
+          "TUBULAR OFFICE TABLE",
+          "2×1.5 OFFICE TABLE",
+        ];
 
-    officeTables.forEach((item, index) => {
-      document.write(`
+        officeTables.forEach((item, index) => {
+          document.write(`
         <div class="product-card">
           <div class="image-container">
             <img src="images/products/ofc%20(${index + 1}).JPG" alt="${item}">
@@ -284,21 +321,21 @@
           </div>
         </div>
       `);
-    });
+        });
 
-    // Function to create the WhatsApp link for ordering
-    function orderNow(itemName) {
-      const message = `Hi! I would like to order the following item: ${itemName}. Please provide more details.`;
-      const whatsappURL = `https://wa.me/your-whatsapp-number?text=${encodeURIComponent(message)}`;
-      window.open(whatsappURL, '_blank');
-    }
-  </script>
-</div>
-<!-- Category 6: Discussion Tables -->
-<div id="category6" class="product-gallery">
-  <script>
-    for (let i = 1; i <= 7; i++) {
-      document.write(`
+        // Function to create the WhatsApp link for ordering
+        function orderNow(itemName) {
+          const message = `Hi! I would like to order the following item: ${itemName}. Please provide more details.`;
+          const whatsappURL = `https://wa.me/your-whatsapp-number?text=${encodeURIComponent(message)}`;
+          window.open(whatsappURL, "_blank");
+        }
+      </script>
+    </div>
+    <!-- Category 6: Discussion Tables -->
+    <div id="category6" class="product-gallery">
+      <script>
+        for (let i = 1; i <= 7; i++) {
+          document.write(`
         <div class="product-card">
           <div class="image-container">
             <img src="images/products/meeting%20(${i}).JPG" alt="Discussion Table ${i}">
@@ -310,30 +347,32 @@
           </div>
         </div>
       `);
-    }
+        }
 
-    // Function to handle WhatsApp order
-    function orderNow(itemName) {
-      const message = `Hi! I would like to order the following item: ${itemName}. Please provide more details.`;
-      const whatsappURL = `https://wa.me/your-whatsapp-number?text=${encodeURIComponent(message)}`;
-      window.open(whatsappURL, '_blank');
-    }
-  </script>
-</div>
+        // Function to handle WhatsApp order
+        function orderNow(itemName) {
+          const message = `Hi! I would like to order the following item: ${itemName}. Please provide more details.`;
+          const whatsappURL = `https://wa.me/your-whatsapp-number?text=${encodeURIComponent(message)}`;
+          window.open(whatsappURL, "_blank");
+        }
+      </script>
+    </div>
 
-  <!-- Additional Categories for Office Tables & Discussion Tables -->
+    <!-- Additional Categories for Office Tables & Discussion Tables -->
 
-  <script>
-    function showCategory(categoryId, btn) {
-      document.querySelectorAll('.product-gallery').forEach(div => {
-        div.classList.remove('visible');
-      });
-      document.querySelectorAll('.category-buttons button').forEach(button => {
-        button.classList.remove('selected');
-      });
-      document.getElementById(categoryId).classList.add('visible');
-      btn.classList.add('selected');
-    }
-  </script>
-</body>
+    <script>
+      function showCategory(categoryId, btn) {
+        document.querySelectorAll(".product-gallery").forEach((div) => {
+          div.classList.remove("visible");
+        });
+        document
+          .querySelectorAll(".category-buttons button")
+          .forEach((button) => {
+            button.classList.remove("selected");
+          });
+        document.getElementById(categoryId).classList.add("visible");
+        btn.classList.add("selected");
+      }
+    </script>
+  </body>
 </html>

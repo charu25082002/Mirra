@@ -71,7 +71,7 @@ body {
   right: 0;
   width: 45%;
   height: 100%;
-  background-image: url(../images/orange_shape_transparent.png);
+  background-image: url(../images/hero11.png);
   background-size: cover;
 }
 
@@ -130,7 +130,7 @@ body {
 }
 
 .custom_nav-container.navbar-expand-lg .navbar-nav .nav-item.active .nav-link, .custom_nav-container.navbar-expand-lg .navbar-nav .nav-item:hover .nav-link {
-  color: #24d278;
+  color: #b01736;
 }
 
 a,
@@ -277,7 +277,7 @@ a:focus {
 }
 
 .slider_section .detail-box h1 {
-  color: #24d278;
+  color: #b01736;
   text-transform: uppercase;
 }
 
@@ -304,7 +304,7 @@ a:focus {
 .slider_section .detail-box .btn-box .btn-1 {
   display: inline-block;
   padding: 6px 0;
-  background-color: #24d278;
+  background-color: #b01736;
   color: #ffffff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -315,8 +315,8 @@ a:focus {
 
 .slider_section .detail-box .btn-box .btn-1:hover {
   background-color: transparent;
-  border-color: #24d278;
-  color: #24d278;
+  border-color: #b01736;
+  color: #b01736;
 }
 
 .slider_section .detail-box .btn-box .btn-2 {
@@ -355,7 +355,7 @@ a:focus {
 }
 
 .slider_section .play_btn {
-  background-color: #f36f02;
+  background-color: #b01736;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -375,7 +375,7 @@ a:focus {
 }
 
 .slider_section .play_btn a {
-  background-color: #e85805;
+  background-color: #b01736;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -404,7 +404,7 @@ a:focus {
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: #f36c05;
+  background-color: #b01736;
   opacity: 1;
   border-radius: 100%;
   -webkit-transform: translate(-50%, -50%);
@@ -458,7 +458,7 @@ a:focus {
   width: 15px;
   height: 15px;
   border-radius: 100%;
-  background-color: #f13207;
+  background-color: #b01736;
   opacity: 1;
   border: none;
   background-clip: unset;
@@ -528,7 +528,7 @@ a:focus {
 
 .trending_section .tab_container .t-link-box {
   margin: 65px 0;
-  color: #24d278;
+  color: #b01736;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -545,7 +545,7 @@ a:focus {
 }
 
 .trending_section .tab_container .t-link-box hr {
-  background-color: #24d278;
+  background-color: #b01736;
   width: 60px;
   height: 1.5px;
   border: none;
@@ -561,7 +561,7 @@ a:focus {
 }
 
 .trending_section .tab_container .t-link-box[aria-expanded="true"] .t-name {
-  color: #24d278;
+  color: #b01736;
 }
 
 .trending_section .img_container {
@@ -618,7 +618,7 @@ a:focus {
 .discount_section .detail-box h2.main_heading {
   font-size: 3rem;
   padding: 0;
-  color: #24d278;
+  color: #b01736;
   text-transform: uppercase;
 }
 
@@ -674,7 +674,7 @@ a:focus {
 }
 
 .brand_section .brand_container .box h6.price {
-  color: #24d278;
+  color: #b01736;
 }
 
 .brand_section .brand_container .box .new {
@@ -695,7 +695,7 @@ a:focus {
 }
 
 .brand_section .brand_container .box:hover {
-  background-color: #24d278;
+  background-color: #b01736;
 }
 
 .brand_section .brand_container .box:hover h6.price {
@@ -781,7 +781,7 @@ a:focus {
 .contact_section button {
   display: inline-block;
   padding: 12px 45px;
-  background-color: #24d278;
+  background-color: #b01736;
   color: #ffffff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -794,8 +794,8 @@ a:focus {
 
 .contact_section button:hover {
   background-color: transparent;
-  border-color: #24d278;
-  color: #24d278;
+  border-color: #b01736;
+  color: #b01736;
 }
 
 .contact_section .map_container {
@@ -852,7 +852,7 @@ a:focus {
 }
 
 .client_section .client_box .client-id .name p {
-  color: #24d278;
+  color: #b01736;
   margin: 0;
 }
 
@@ -1214,7 +1214,7 @@ a:focus {
 /* About Section Styling */
 .about_section {
     padding: 80px 0;
-    background-color: rgba(227, 71, 10, 0.908);
+    background-color: #b01736;
     color: #fff;
     position: relative;
 }
@@ -1427,9 +1427,9 @@ a:focus {
   cursor: pointer;
   font-size: 16px;
   border: none;
-  background-color: #d55c02; /* Gradient background */
+  background-color: #b01736; /* Gradient background */
  /* Gradient background */
-  color: rgb(18, 18, 18);
+  color: white;
   border-radius: 30px; /* Rounded corners for a sleek look */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -1440,7 +1440,7 @@ a:focus {
 .category-buttons button:hover {
   transform: translateY(-4px); /* Hover effect: slight lift */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
-  background: linear-gradient(45deg, #feb47b, #ff7e5f); /* Reverse gradient on hover */
+  background: linear-gradient(45deg, #b01736, #8a0c2a); /* Reverse gradient on hover */
 }
 
 .category-buttons .selected {
@@ -1530,7 +1530,7 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
       font-weight: 600;
       margin-top: 5px;
       color: #fff;
-      background-color: #ea6303; 
+      background-color: #b01736; 
       border: 2px solid transparent;
       border-radius: 10px;
       cursor: pointer;
@@ -1644,7 +1644,7 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
 }
 
 .star:hover {
-  color: #ff8c00; /* Orange color when hovered */
+  color: #b01736; /* Orange color when hovered */
 }
 
 

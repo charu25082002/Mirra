@@ -1,4 +1,4 @@
-* {
+  * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -17,7 +17,7 @@
             text-align: center;
             margin: 50px 0;
             letter-spacing: 3px;
-            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            background: #b01736;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -35,7 +35,8 @@
             padding: 14px 28px;
             border: none;
             border-radius: 40px;
-            background: #f48b55;
+            /* background: #f48b55; */
+            background: #b01736;
             font-size: 16px;
             cursor: pointer;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -89,7 +90,7 @@
             object-fit: contain;
             background: #fff;
             padding: 20px;
-            cursor: pointer; /* indicate clickability */
+            cursor: pointer;
         }
 
         .card h3 {
@@ -103,7 +104,6 @@
             display: block;
             padding: 10px 20px;
             width: 200px;
-            margin-left: 70px;
             border: none;
             background: #333;
             color: white;
@@ -113,7 +113,7 @@
         }
 
         .view-btn:hover {
-            background: #f48b55;
+            background: #b01736;
         }
 
         /* Back button */
@@ -151,43 +151,13 @@
             margin-top: 20px;
         }
 
-        /* Image hover effect (if used) */
-        .image-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .image-container img {
-            width: 100%;
-            margin-bottom: -3px;
-            display: block;
-            transition: opacity 0.4s ease;
-        }
-
-        .img-hover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-        }
-
-        .image-container:hover .img-hover {
-            opacity: 1;
-        }
-
-        .image-container:hover .img-default {
-            opacity: 0;
-        }
-
-        /* ========== LIGHTBOX MODAL ========== */
+        /* ========== LIGHTBOX MODAL (single image) ========== */
         .modal {
             display: none;
             position: fixed;
             z-index: 2000;
             left: 0;
             top: 0;
-            
             width: 100%;
             height: 100%;
             background-color: white;
@@ -209,7 +179,7 @@
             position: absolute;
             top: 20px;
             right: 40px;
-            color: #f48b55;
+            color:  #b01736;
             font-size: 50px;
             font-weight: bold;
             cursor: pointer;
@@ -218,7 +188,59 @@
         }
 
         .close-btn:hover {
-            color: #f48b55;
+            color:  #b01736;
+        }
+
+        /* ========== MULTI‑IMAGE PREVIEW MODAL ========== */
+        .multi-preview-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+        .multi-preview-box {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            width: 420px;
+            text-align: center;
+        }
+        .multi-preview-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .multi-preview-main {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+        }
+        .multi-preview-thumbs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .multi-preview-thumbs img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 6px;
+        }
+        .multi-preview-thumbs img:hover {
+            border-color:  #b01736;
         }
 
         /* Responsive adjustments */
@@ -227,21 +249,14 @@
             .title { font-size: 30px; margin-bottom: 30px; }
             .btn { padding: 12px 24px; font-size: 15px; }
         }
-
         @media (max-width: 768px) {
             .title { font-size: 26px; }
             .btn { padding: 10px 20px; font-size: 14px; }
             .card h3 { font-size: 17px; }
             .view-btn { width: 160px; margin-left: auto; margin-right: auto; }
         }
-
         @media (max-width: 576px) {
             .btn { padding: 8px 16px; font-size: 13px; }
             .card img { height: 180px; }
             .view-btn { width: 140px; }
-        }
-
-        @media (max-width: 400px) {
-            .btn { padding: 7px 12px; font-size: 12px; }
-            .view-btn { width: 120px; }
         }
