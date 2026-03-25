@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Furniture Catalog | Vertical Categories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            padding: 40px 30px;
+        }
+
+        /* MAIN LAYOUT: VERTICAL BUTTONS ABOVE, PRODUCTS BELOW */
+        .catalog-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* ========= VERTICAL CATEGORY BUTTONS (top, side by side? no, vertical list) ========= */
+        .category-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            width: 280px;
+            margin: 0 auto 40px auto; /* centered, but can be left aligned */
+            background: #fff;
+            padding: 24px 20px;
+            border-radius: 32px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn {
+            padding: 14px 18px;
+            border: none;
+            border-radius: 60px;
+            background: #b01736;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: center;
+            color: white;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn.active {
+            background: #1e2a32;
+            color: white;
+            transform: scale(1.02);
+            border-left: 5px solid #ffb347;
+            border-radius: 60px;
+        }
+
+        .btn:hover {
+            background: #8b132c;
+            transform: translateY(-2px);
+        }
+
+        /* Product display area (hidden by default, shown on button click) */
+        .product-display-area {
+            width: 100%;
+        }
+
+        .product-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .product-section.active-section {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .title {
+            font-size: 38px;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0 35px 0;
+            letter-spacing: 2px;
+            background: #b01736;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Product Grid - exactly 3 columns on desktop */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .category-buttons {
+                width: 90%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+                padding: 18px;
+            }
+            .btn {
+                flex: 0 0 auto;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 25px 16px;
+            }
+            .products {
+                grid-template-columns: 1fr;
+            }
+            .title {
+                font-size: 28px;
+                margin: 15px 0 25px;
+            }
+        }
+
+        /* Card styling */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            padding-bottom: 18px;
+            transition: 0.25s ease;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 260px;
+            object-fit: contain;
+            background: #fafafa;
+            padding: 18px;
+        }
+
+        .card h3 {
+            padding: 8px 15px 5px;
+            font-size: 17px;
+            font-weight: 600;
+            text-align: center;
+            color: #1e2a32;
+        }
+
+        .view-btn {
+            margin: 12px auto 5px;
+            display: block;
+            padding: 10px 18px;
+            width: 170px;
+            border: none;
+            background: #2c3e44;
+            color: white;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .view-btn:hover {
+            background: #b01736;
+        }
+
+        /* Back button inside product sections */
+        .back-btn {
+            padding: 12px 30px;
+            border: none;
+            background: #6c757d;
+            color: white;
+            border-radius: 40px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: #495057;
+            transform: translateY(-2px);
+        }
+
+        .back-btn-wrapper {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+
+        /* ========= LIGHTBOX MODAL ========= */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 52px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #b01736;
+        }
+
+        /* ========= MULTI‑IMAGE PREVIEW MODAL ========= */
+        .multi-preview-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+
+        .multi-preview-box {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            border-radius: 24px;
+            width: 460px;
+            text-align: center;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+        }
+
+        .multi-preview-close {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 32px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .multi-preview-main {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background: #f0f0f0;
+            border-radius: 16px;
+        }
+
+        .multi-preview-thumbs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .multi-preview-thumbs img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 12px;
+        }
+
+        .multi-preview-thumbs img:hover {
+            border-color: #b01736;
+        }
+
+        @media (max-width: 540px) {
+            .multi-preview-box {
+                width: 92%;
+            }
+        }
+
+        /* Optional: empty state message */
+        .no-selection-message {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #777;
+            padding: 60px 20px;
+            background: #fff;
+            border-radius: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="catalog-container">
+    <!-- VERTICAL CATEGORY BUTTONS (only these visible initially) -->
+    <div class="category-buttons">
+        <button class="btn" data-target="main">🪑 Office Chairs</button>
+        <button class="btn" data-target="writingPadSection">✍️ Chairs with Writing Pad</button>
+        <button class="btn" data-target="workStationSection">💻 Work Station</button>
+        <button class="btn" data-target="steelSection">🔩 Steel Furniture</button>
+        <button class="btn" data-target="officeTablesSection">📋 Office Tables</button>
+        <button class="btn" data-target="discussionTablesSection">🗣️ Discussion Tables</button>
+        <button class="btn" data-target="modularKitchenSection">🍽️ Modular Kitchen</button>
+        <button class="btn" data-target="sparesSection">🔧 Spares</button>
+        <button class="btn" data-target="banquetHallSection">🎉 Banquet Hall Furniture</button>
+        <button class="btn" data-target="mediumBackSection">🪑 Medium Back Series</button>
+        <button class="btn" data-target="cafeSection">☕ Cafe Chairs</button>
+        <button class="btn" data-target="auditoriumSeatingSection">🎭 Auditorium Seating</button>
+        <button class="btn" data-target="institutionSection">🏫 Institution</button>
+        <button class="btn" data-target="customerReviewSection">⬆️ Raised High Chairs</button>
+    </div>
+
+    <!-- PRODUCT DISPLAY AREA (all sections hidden initially) -->
+    <div class="product-display-area">
+        <!-- Main Office Chairs grid -->
+        <div id="mainProductsSection" class="product-section">
+            <h1 class="title">Office Chairs Collection</h1>
+            <div class="back-btn-wrapper">
+                <button class="back-btn global-back">← Back to Categories</button>
+            </div>
+            <div class="products">
+                <div class="card">
+                    <img src="./images/products/visitor (1).JPG" alt="Visitor Chairs" />
+                    <h3>Visitor Chairs</h3>
+                    <button class="view-btn" data-target="visitorSection">View More Chairs</button>
+                </div>
+                <div class="card">
+                    <img src="./images/All products/office Chairs/Mesh High back/7bf5fdb3-9da2-4854-b914-9fe363be957b.jpeg" alt="Mesh High Back" />
+                    <h3>Mesh High Back</h3>
+                    <button class="view-btn" data-target="meshSection">View More Chairs</button>
+                </div>
+                <div class="card">
+                    <img src="./images/All products/office Chairs/leather Chairs/c8b6d685-ca80-48a1-bd0a-387fa76e6c9e.jpeg" alt="Leather Chairs" />
+                    <h3>Leather Chairs</h3>
+                    <button class="view-btn" data-target="leatherSection">View More Chairs</button>
+                </div>
+                <div class="card">
+                    <img src="./images/All products/office Chairs/Tandem Seating/Screenshot 2026-03-07 115448.png" alt="Tandem Seating" />
+                    <h3>Tandem Seating</h3>
+                    <button class="view-btn" data-target="tandemSection">View More Chairs</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- All detailed sections (each wrapped in product-section) -->
+        <div id="visitorSection" class="product-section">
+            <h1 class="title">Visitor Chairs Collection</h1>
+            <div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products">
+                <div class="card"><img src="./images/products/visitor (2).JPG" /><h3>805 visitor</h3></div>
+                <div class="card"><img src="./images/products/visitor (3).JPG" /><h3>Jazz visitor</h3></div>
+                <div class="card"><img src="./images/products/visitor (4).JPG" /><h3>Gamma visitor</h3></div>
+                <div class="card"><img src="./images/products/visitor (5).JPG" /><h3>Neo mesh visitor</h3></div>
+                <div class="card"><img src="./images/products/visitor (6).JPG" /><h3>IO visitor</h3></div>
+                <div class="card"><img src="./images/products/visitor (7).JPG" /><h3>Sliver visitor</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Visitor chairs/376dc000-5ba6-4f4c-8b42-2a7d296c6ca5.jpeg" /><h3>Mayor visitor</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Visitor chairs/7e2ac997-027e-4257-b3e4-184c4a5994a4.jpeg" /><h3>Sharp visitor</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Visitor chairs/b205b27c-d707-4217-9a31-a54922d6c07e.jpeg" /><h3>Padmini visitor</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Visitor chairs/ccf9bbe7-c4a2-4b3e-9905-bf058feef2f3.jpeg" /><h3>803 I.O visitor</h3></div>
+            </div>
+        </div>
+
+        <div id="workstationSection" class="product-section">
+            <h1 class="title">Workstation Chairs Collection</h1>
+            <div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products">
+                <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/1.jpeg" /><h3>Ergo Task</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/2.jpeg" /><h3>Mesh Task</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/3.jpeg" /><h3>Executive Mesh</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/4.jpeg" /><h3>Leather Task</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Workstation Chairs/5.jpeg" /><h3>Drafting Chair</h3></div>
+            </div>
+        </div>
+
+        <div id="meshSection" class="product-section">
+            <h1 class="title">Mesh High Back Collection</h1>
+            <div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products">
+                <div class="card"><img src="./images/All products/office Chairs/Mesh High back/7bf5fdb3-9da2-4854-b914-9fe363be957b.jpeg" /><h3>OPTIMA HB</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Mesh High back/64092511-eb92-4df5-bf07-bd53d4b955d2.png" /><h3>JAZZ HIGH BACK</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Mesh High back/7.jpeg" /><h3>BUTTERFLY HIGH BACK</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Mesh High back/ac79a164-ff0b-4ec7-9b08-1d4b28ae64d9.png" /><h3>MARVEL 2 HIGH BACK</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Mesh High back/406a243b-ec69-49c9-bc09-e2cd99e66aec.jpeg" /><h3>Honda Mesh back</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Mesh High back/8.jpeg" /><h3>Bonai High Back</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Mesh High back/2.png" /><h3>Matrix High back</h3></div>
+            </div>
+        </div>
+
+        <div id="leatherSection" class="product-section">
+            <h1 class="title">Leather Chairs Collection</h1>
+            <div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products">
+                <div class="card"><img src="./images/All products/office Chairs/leather Chairs/188e44ce-7edf-434f-b5df-6e2719db664f.jpeg" /><h3>Executive Leather</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/leather Chairs/45d0fb80-06d7-42b6-8347-33e9fe21f15e.jpeg" /><h3>Boss Leather</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/leather Chairs/6db317c1-b366-4649-8d67-e598db0ad51b.jpeg" /><h3>Classic Brown</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/leather Chairs/88e04541-5f02-407a-8f7b-6a605b3ec2a2.jpeg" /><h3>Black Leather</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/leather Chairs/93fb0123-7f34-4da6-8556-2393db1b8b52.jpeg" /><h3>Vintage Leather</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/leather Chairs/c8b6d685-ca80-48a1-bd0a-387fa76e6c9e.jpeg" /><h3>Modern Leather</h3></div>
+            </div>
+        </div>
+
+        <div id="tandemSection" class="product-section">
+            <h1 class="title">Tandem Seating Collection</h1>
+            <div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products">
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006936_ibis-airport-sofa_360.webp" /><h3>Ibis-airport-sofa</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006944_vienna-3-seater-airport-sofa-with-cushion_360.webp" /><h3>Vienna 3-Seater</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006945_vienna-3-seater-airport-sofa_360.webp" /><h3>Vienna-3-seater</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006946_vienna-3-seater-ss-airport-sofa_360.webp" /><h3>Vienna-ss</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006949_vienna-two-seater-airport-sofa_360.webp" /><h3>Vienna-two-seater</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/image (1) (1).png" /><h3>Metal Tandem</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006951_vienna-4-seater-airport-sofa_360.webp" /><h3>Vienna-4-seater</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006952_vienna-4-seater-ss-airport-sofa_360.webp" /><h3>Vienna-4-ss</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006953_vienna-5-seater-airport-sofa_360.webp" /><h3>Vienna-5-seater</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006955_ibis-three-seater-with-cushion-airport-sofa_360.webp" /><h3>Ibis-three-seater</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0006958_viktor-3-seater-airport-sofa_360.webp" /><h3>Viktor-3-seater</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Tandem Seating/0009229_metro-ss-3-seater-airport-sofa_360.webp" /><h3>Metro-ss-3-seater</h3></div>
+            </div>
+        </div>
+
+        <div id="writingPadSection" class="product-section">
+            <h1 class="title">Chairs with Writing Pad</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products">
+                <div class="card"><img src="./images/products/pad (1).jpeg" /><h3>Mayor half writing pad</h3></div>
+                <div class="card"><img src="./images/products/pad (2).JPG" /><h3>Perfo writing with mesh</h3></div>
+                <div class="card"><img src="./images/products/pad (3).JPG" /><h3>Padmini writing pad</h3></div>
+                <div class="card"><img src="./images/All products/office Chairs/Mesh High back/c073e2d3-59b8-44ad-8943-f2115e826f9e.png" /><h3>Mata full pad</h3></div>
+                <div class="card"><img src="./images/products/pad (5).JPG" /><h3>Mesh writing pad</h3></div>
+                <div class="card"><img src="./images/products/pad (6).JPG" /><h3>Gamma half writing pad</h3></div>
+            </div>
+        </div>
+
+        <div id="workStationSection" class="product-section">
+            <h1 class="title">Work Station Collection</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products">
+                <div class="card"><img src="./images/products/work (1).JPG" /><h3>LINEAR PILLAR</h3></div>
+                <div class="card"><img src="./images/products/work (2).JPG" /><h3>LINEAR PARTICLE BOARD</h3></div>
+                <div class="card"><img src="./images/products/work (3).JPG" /><h3>4IN1 WORKSTATION</h3></div>
+                <div class="card"><img src="./images/products/work (4).JPG" /><h3>LINEAR WORKSTATION</h3></div>
+                <div class="card"><img src="./images/All products/work station/1.jpeg" /><h3>Single</h3></div>
+                <div class="card"><img src="./images/All products/work station/2.jpeg" /><h3>Back to back</h3></div>
+                <div class="card"><img src="./images/All products/work station/3.jpeg" /><h3>Executive workstation</h3></div>
+                <div class="card"><img src="./images/All products/work station/4.jpeg" /><h3>L shaped</h3></div>
+            </div>
+        </div>
+
+        <div id="steelSection" class="product-section">
+            <h1 class="title">Steel Furniture</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products">
+                <div class="card"><img src="./images/products/steel (1).JPG" /><h3>GLASS DOOR ALMIRAH</h3></div>
+                <div class="card"><img src="./images/products/steel (2).JPG" /><h3>STEEL EXECUTIVE TABLE</h3></div>
+                <div class="card"><img src="./images/products/steel (3).JPG" /><h3>BOOK CASE</h3></div>
+                <div class="card"><img src="./images/products/steel (4).JPG" /><h3>4×2 1D 1C TABLE</h3></div>
+                <div class="card"><img src="./images/products/steel (5).JPG" /><h3>PLAIN ALMIRAH</h3></div>
+                <div class="card"><img src="./images/products/steel (6).JPG" /><h3>PIGEON HOLE</h3></div>
+                <div class="card"><img src="./images/products/steel (7).JPG" /><h3>SLIDING GLASS CUPBOARD</h3></div>
+                <div class="card"><img src="./images/products/steel (8).JPG" /><h3>STEEL SLOTTED ANGLE</h3></div>
+                <div class="card" onclick="event.stopPropagation(); showMultiImagePreview(['./images/products/steel (9).JPG','./images/products/steel (10).JPG']);">
+                    <img src="./images/products/steel (9).JPG" /><h3>FILING CABINET (Opened)</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="officeTablesSection" class="product-section">
+            <h1 class="title">Office Tables</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products">
+                <div class="card"><img src="./images/products/ofc (1).JPG" /><h3>3×1.5 OFFICE TABLE</h3></div>
+                <div class="card"><img src="./images/products/ofc (2).JPG" /><h3>4×2 OFFICE CUM COMPUTER</h3></div>
+                <div class="card"><img src="./images/products/ofc (3).JPG" /><h3>TUBULAR OFFICE TABLE</h3></div>
+                <div class="card"><img src="./images/products/ofc (4).JPG" /><h3>2×1.5 OFFICE TABLE</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0006969_acacia-computer-desk_360.webp" /><h3>Acacia Computer Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0006975_acer-computer-desk_360.webp" /><h3>Acer Computer Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0006981_adison-computer-table_360.webp" /><h3>Adison Computer Table</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0006989_albany-desk_360.webp" /><h3>Albany Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0006997_albion-computer-desk_360.webp" /><h3>Albion Computer Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0006998_alcatal-reception-table_360.webp" /><h3>Alcatal Reception Table</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007005_alder-work-desk_360.webp" /><h3>Alder Work Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007012_alisma-computer-table_360.webp" /><h3>Alisma Computer Table</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007014_alterton-computer-desk_360.webp" /><h3>Alterton Computer Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007020_aspen-computer-desk_360.webp" /><h3>Aspen Computer Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007025_aston-computer-desk_360.webp" /><h3>Aston Computer Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007027_aura-decor-computer-table_360.webp" /><h3>Aura Decor Computer Table</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007033_austin-computer-desk_360.webp" /><h3>Austin Computer Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007034_blaster-computer-table_360.webp" /><h3>Blaster Computer Table</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007040_boge-desk_360.webp" /><h3>Boge Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007164_italia-classic-desk.webp" /><h3>Italia Classic Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/0007195_office-star-working-desk.webp" /><h3>Office Star Working Desk</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/1.jpeg" /><h3>Laptop table</h3></div>
+                <div class="card"><img src="./images/All products/Office tables/2.jpeg" /><h3>Laptop table with keyboard tray</h3></div>
+            </div>
+        </div>
+
+        <div id="discussionTablesSection" class="product-section">
+            <h1 class="title">Discussion Tables</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products"><div class="card"><img src="./images/products/meeting (1).JPG" /><h3>GLASS DISCUSSION TABLE</h3></div><div class="card"><img src="./images/products/meeting (2).JPG" /><h3>CONFERENCE TABLE</h3></div><div class="card"><img src="./images/products/meeting (3).JPG" /><h3>ROUND DISCUSSION TABLE</h3></div><div class="card"><img src="./images/products/meeting (4).JPG" /><h3>OVAL CONFERENCE TABLE</h3></div><div class="card"><img src="./images/products/meeting (5).JPG" /><h3>OVAL CONFERENCE TABLE</h3></div><div class="card"><img src="./images/products/meeting (6).JPG" /><h3>HORSE SHOE CONFERENCE TABLE</h3></div></div>
+        </div>
+
+        <div id="modularKitchenSection" class="product-section">
+            <h1 class="title">Modular Kitchen</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products"><div class="card"><img src="./images/All products/Modular kitchen/1.jpeg" /><h3>Island kitchen</h3></div><div class="card"><img src="./images/All products/Modular kitchen/2.jpeg" /><h3>L shaped kitchen</h3></div><div class="card"><img src="./images/All products/Modular kitchen/3.jpeg" /><h3>Parallel kitchen 1</h3></div><div class="card"><img src="./images/All products/Modular kitchen/4.jpeg" /><h3>Parallel kitchen 2</h3></div><div class="card"><img src="./images/All products/Modular kitchen/5.jpeg" /><h3>Parallel kitchen 3</h3></div><div class="card"><img src="./images/All products/Modular kitchen/6.jpeg" /><h3>Straight kitchen</h3></div><div class="card"><img src="./images/All products/Modular kitchen/7.jpeg" /><h3>U shaped 1</h3></div><div class="card"><img src="./images/All products/Modular kitchen/8.jpeg" /><h3>U shaped 2</h3></div></div>
+        </div>
+
+        <div id="cafeSection" class="product-section"><h1 class="title">Cafe Chairs</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div><div class="products"><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/ecb28e85-c412-4c94-8cc8-feb0cc0151b0.jpeg" /><h3>C1</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/382ea4ac-98c5-4c93-866f-5cab5325c301.jpeg" /><h3>C2</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/5b85668d-0670-4d06-acf7-95b76c957060.jpeg" /><h3>C3</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/5e6b562e-93eb-4f7c-9dac-c871dac58773.jpeg" /><h3>C4</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/7440a5ec-2ccd-465a-99aa-686d58c76bea.jpeg" /><h3>C5</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/a113dc94-befa-4c7b-a104-d9b9d15bd2a8.jpeg" /><h3>C6</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/c2e56045-913d-4691-8502-c78f457c7fcf.jpeg" /><h3>C7</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/cda323e6-ff83-4324-b563-0d16dae617c3.jpeg" /><h3>C8</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/dc97fa2b-a3a5-4d6f-9bc1-61fd45d85e5f.jpeg" /><h3>C9</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/2.jpeg" /><h3>C10</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/3.jpeg" /><h3>C11</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/4.jpeg" /><h3>C12</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/5.jpeg" /><h3>C13</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/6.jpeg" /><h3>C14</h3></div><div class="card"><img src="./images/All products/office Chairs/Cafe chairs/7.jpeg" /><h3>C15</h3></div></div></div>
+
+        <div id="institutionSection" class="product-section"><h1 class="title">Institution</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div><div class="products"><div class="card"><img src="./images/All products/Institution/5fc4c934-898c-4cb7-a40a-fd601de9b142.png" /><h3>SM 1</h3></div><div class="card"><img src="./images/All products/Institution/bb9934ac-dc66-4fce-b0b5-5ff83a1ec552.png" /><h3>SM 2</h3></div><div class="card"><img src="./images/All products/Institution/4fe99019-8cbe-4401-80bb-f4a4ca3a8180.png" /><h3>SM 3</h3></div><div class="card"><img src="./images/All products/Institution/1.jpeg" /><h3>Flip training chair</h3></div></div></div>
+
+        <div id="auditoriumSeatingSection" class="product-section"><h1 class="title">Auditorium Seating</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div><div class="products"><div class="card"><img src="./images/All products/Auditorium/1.png" /><h3>Elite Wooden Arm</h3></div><div class="card"><img src="./images/All products/Auditorium/2.png" /><h3>Compact Writing Pad</h3></div><div class="card"><img src="./images/All products/Auditorium/3.png" /><h3>Premium Cushioned Recliner</h3></div><div class="card"><img src="./images/All products/Auditorium/4.png" /><h3>Fixed Pedestal Chair</h3></div><div class="card"><img src="./images/All products/Auditorium/5.png" /><h3>Dual Seater Bench</h3></div><div class="card"><img src="./images/All products/Auditorium/6.png" /><h3>Classic Twin Unit</h3></div></div></div>
+
+        <div id="sparesSection" class="product-section">
+            <h1 class="title">Adjustable Handle Series</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div>
+            <div class="products"><div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/NEW-ADJUSTABLE-HANDLE.webp" /><h3>NEW ADJUSTABLE HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/OLA-HANDLE.webp" /><h3>OLA HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/OYO-HANDLE-WITH-3D-PAD.webp" /><h3>OYO HANDLE-WITH 3D</h3></div><div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/OYO-HANDLE.webp" /><h3>OYO HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Adjustable Handle Series/UNIQ-ADJUSTABLE-HANDLE.webp" /><h3>UNIQ ADJUSTABLE HANDLE</h3></div></div>
+            <h1 class="title">Back & Seat Pu Foam Series</h1><div class="products"><div class="card"><img src="./images/All products/Spares/Back & Seat Pu Foam Series/801-PU-FOAM.webp" /><h3>801 PU FOAM</h3></div><div class="card"><img src="./images/All products/Spares/Back & Seat Pu Foam Series/802-PU-FOAM.webp" /><h3>802 PU FOAM</h3></div><div class="card"><img src="./images/All products/Spares/Back & Seat Pu Foam Series/803-PU-FOAM.webp" /><h3>803 PU FOAM</h3></div><div class="card"><img src="./images/All products/Spares/Back & Seat Pu Foam Series/AUDITORIUM-BACK-PU.webp" /><h3>AUDITORIUM BACK PU</h3></div></div>
+            <h1 class="title">Base Series</h1><div class="products"><div class="card"><img src="./images/All products/Spares/Base Series/NEW-NYLON-BASE.webp" /><h3>NEW-NYLON-BASE</h3></div><div class="card"><img src="./images/All products/Spares/Base Series/PENTA-BASE-26.webp" /><h3>PENTA-BASE</h3></div><div class="card"><img src="./images/All products/Spares/Base Series/SPIDER-BASE-26 (1).webp" /><h3>SPIDER-BASE</h3></div><div class="card"><img src="./images/All products/Spares/Base Series/STAR-BASE-26 (1).webp" /><h3>STAR-BASE</h3></div><div class="card"><img src="./images/All products/Spares/Base Series/STARK-BASE-26_-28_-INCH-HD-IMAGE-002-1.webp" /><h3>STARK-BASE</h3></div><div class="card"><img src="./images/All products/Spares/Base Series/TAURUS-BASE-BLACK.webp" /><h3>TAURUS-BASE-BLACK</h3></div></div>
+            <h1 class="title">Fixed Handle Series</h1><div class="products"><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/CHOCH-HANDLE.webp" /><h3>CHOUNCH HANDLE-BIG</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/GODREJ-HANDLE.webp" /><h3>GODREJ HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/NOVEL-HANDLE-.webp" /><h3>NOVEL-HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/RF-HANDLE.webp" /><h3>RF-HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/SLICE-HANDLE.webp" /><h3>SLICE-HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/SWAN-HANDLE.webp" /><h3>SWAN-HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/T-HANDLE.webp" /><h3>T-HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/T-SONIC-HANDLE.webp" /><h3>T-SONIC-HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/TRIANGULAR-HANDLE.webp" /><h3>TRIANGULAR-HANDLE</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/XW-HANDLE-NEW.webp" /><h3>XW-HANDLE-NEW</h3></div><div class="card"><img src="./images/All products/Spares/Fixed Handle Series/XW-HANDLE.webp" /><h3>XW-HANDLE</h3></div></div>
+            <h1 class="title">Pu Pad Series</h1><div class="products"><div class="card"><img src="./images/All products/Spares/Pu pad series/070-CFL-PAD.webp" /><h3>076CFL(OLD)</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/ALTO-PAD.webp" /><h3>076CFLF-FD PAD</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/CRUSE-PAD.webp" /><h3>CRUSE PAD</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/D-PAD.webp" /><h3>D PAD</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/DOOM-PAD.webp" /><h3>DOOM PAD</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/FEDA-PAD.webp" /><h3>FEDA-PAD</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/GALAXY-1-PU-PAD-HD-PHOTO-008.webp" /><h3>GALAXY PU PAD 1</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/GALAXY-2-PU-PAD-HD-PHOTO-006.webp" /><h3>GALAXY PU PAD 2</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/GALAXY-3-PU-PAD-HD-PHOTO-006.webp" /><h3>GALAXY PU PAD 3</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/METRO-PAD-1.webp" /><h3>METRO PAD</h3></div><div class="card"><img src="./images/All products/Spares/Pu pad series/QUBE-PAD.webp" /><h3>QUBE PAD</h3></div></div>
+            <h1 class="title">Shell Series</h1><div class="products"><div class="card"><img src="./images/All products/Spares/Shell Series/BAR-STOOL (1).webp" /><h3>BAR SHELL</h3></div><div class="card"><img src="./images/All products/Spares/Shell Series/CENTURY-SHELL.webp" /><h3>CENTURY SHELL</h3></div><div class="card"><img src="./images/All products/Spares/Shell Series/GAAMA-SHELL.webp" /><h3>GAMMA SEAT AND BACK</h3></div><div class="card"><img src="./images/All products/Spares/Shell Series/MEGHNA-SHELL.webp" /><h3>MEGHNA SHELL</h3></div><div class="card"><img src="./images/All products/Spares/Shell Series/PLASTIC-LEGS.webp" /><h3>AXIS & MARVEL SHELL LEG</h3></div><div class="card"><img src="./images/All products/Spares/Shell Series/BAR-STOOL.webp" /><h3>BAR STOOL</h3></div></div>
+        </div>
+
+        <div id="customerReviewSection" class="product-section"><h1 class="title">Raised High Chairs</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div><div class="products"><div class="card"><img src="./images/All products/raised height chairs/0882e3b1-4ae3-449b-b1e8-64b3d970c93c (1).jpeg" /><h3>R1</h3></div><div class="card"><img src="./images/All products/raised height chairs/e7814fa2-f311-4c0b-8ce2-9bd2412a3210 (1).jpeg" /><h3>R2</h3></div><div class="card"><img src="./images/All products/raised height chairs/76ee61a4-a667-4f3f-824c-1f21c2f09e6f (1).jpeg" /><h3>R3</h3></div><div class="card"><img src="./images/All products/raised height chairs/25dbdee1-eaa0-47db-a2ed-929c990a9bc6.jpeg" /><h3>R4</h3></div><div class="card"><img src="./images/All products/raised height chairs/2c6fb6c2-c261-4f97-9981-c54ebe1ba700.jpeg" /><h3>R5</h3></div><div class="card"><img src="./images/All products/raised height chairs/84def0a3-cfae-404d-aa23-2a1b1d806c97.jpeg" /><h3>R6</h3></div><div class="card"><img src="./images/All products/raised height chairs/1.jpeg" /><h3>R7</h3></div><div class="card"><img src="./images/All products/raised height chairs/2.jpeg" /><h3>R8</h3></div></div></div>
+
+        <div id="mediumBackSection" class="product-section"><h1 class="title">Medium Back Series</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div><div class="products"><div class="card"><img src="./images/All products/Medium Back Series/11cb0629-7be8-4745-a6d3-3f815ae6dd2c.jpeg" /><h3>802 IO</h3></div><div class="card"><img src="./images/All products/Medium Back Series/15da45d0-b1ce-45a4-9446-810c34658352.jpeg" /><h3>Butterfly Medium Back</h3></div><div class="card"><img src="./images/All products/Medium Back Series/2bba37fa-32b1-40b0-8acc-120b76c701e8.jpeg" /><h3>New Netted</h3></div><div class="card"><img src="./images/All products/Medium Back Series/30f1bc5a-1a56-4726-abba-e9226e3929e3.jpeg" /><h3>Velfire medium back</h3></div><div class="card"><img src="./images/All products/Medium Back Series/311e4870-5bd5-40a3-9cf2-cf490d0a02a2.jpeg" /><h3>X Mesh</h3></div><div class="card"><img src="./images/All products/Medium Back Series/51c9a700-b621-4f44-b073-b9078df05a71.jpeg" /><h3>805 Mesh</h3></div><div class="card"><img src="./images/All products/Medium Back Series/55e6f298-cee9-4392-8862-b4fcd585ca4b.jpeg" /><h3>804 Mesh</h3></div><div class="card"><img src="./images/All products/Medium Back Series/643c937e-6c37-40d5-b7a9-7476f33d1e5a.jpeg" /><h3>803 Mesh</h3></div><div class="card"><img src="./images/All products/Medium Back Series/939ef316-807a-43a3-9fa3-6ffc6ae79ebe.jpeg" /><h3>1065</h3></div><div class="card"><img src="./images/All products/Medium Back Series/94adf2eb-0f11-4cc3-9975-e5daa3ed65fc.jpeg" /><h3>Marvel 2 Medium Back</h3></div><div class="card"><img src="./images/All products/Medium Back Series/aa1cdb9c-fbc3-485b-b749-71ba970cba66.jpeg" /><h3>Jazz Medium Back</h3></div><div class="card"><img src="./images/All products/Medium Back Series/f6c97e7e-7e2e-46f3-87cf-59bbc25819e3.jpeg" /><h3>802 Mesh</h3></div></div></div>
+
+        <div id="banquetHallSection" class="product-section"><h1 class="title">Banquet Hall Furniture</h1><div class="back-btn-wrapper"><button class="back-btn global-back">← Back to Categories</button></div><div class="products"><div class="card" onclick="event.stopPropagation(); showMultiImagePreview(['./images/All products/banquet hall Furnitures/1.jpeg','./images/All products/banquet hall Furnitures/2.jpeg']);"><img src="./images/All products/banquet hall Furnitures/1.jpeg" /><h3>Foldable round banquet hall table</h3></div><div class="card"><img src="./images/All products/banquet hall Furnitures/3.jpeg" /><h3>BQ 1</h3></div><div class="card"><img src="./images/All products/banquet hall Furnitures/4.jpeg" /><h3>BQ 2</h3></div><div class="card"><img src="./images/All products/banquet hall Furnitures/5.jpeg" /><h3>BQ 2 stackable</h3></div><div class="card"><img src="./images/All products/banquet hall Furnitures/6.jpeg" /><h3>BQ 2 in row</h3></div></div></div>
+    </div>
+</div>
+
+<!-- MODALS -->
+<div id="imageModal" class="modal"><span class="close-btn">&times;</span><img class="modal-content" id="modalImage" /></div>
+<div id="multiImageModal" class="multi-preview-overlay"><div class="multi-preview-box"><span class="multi-preview-close" onclick="closeMultiImagePreview()">&times;</span><img id="multiMainImg" class="multi-preview-main" /><div id="multiThumbContainer" class="multi-preview-thumbs"></div></div></div>
+
+<script>
+    // All product sections (each with class "product-section")
+    const productSections = document.querySelectorAll('.product-section');
+    const categoryBtns = document.querySelectorAll('.category-buttons .btn');
+    const globalBackBtns = document.querySelectorAll('.global-back'); // all back buttons inside sections
+    const viewMoreBtns = document.querySelectorAll('.view-btn'); // subcategory buttons inside main grid
+
+    // Helper: hide all product sections
+    function hideAllSections() {
+        productSections.forEach(section => section.classList.remove('active-section'));
+    }
+
+    // Show a specific section by its id
+    function showSectionById(sectionId) {
+        hideAllSections();
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.classList.add('active-section');
+            // scroll to the product display area smoothly
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    // Remove active class from all category buttons
+    function deactivateAllButtons() {
+        categoryBtns.forEach(btn => btn.classList.remove('active'));
+    }
+
+    // Handle category button click
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-target');
+            deactivateAllButtons();
+            btn.classList.add('active');
+            
+            if (targetId === 'main') {
+                showSectionById('mainProductsSection');
+            } else {
+                showSectionById(targetId);
+            }
+        });
+    });
+
+    // Handle "View More" buttons inside the main Office Chairs grid (they point to sub-sections)
+    viewMoreBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const targetId = btn.getAttribute('data-target');
+            if (targetId) {
+                showSectionById(targetId);
+                // Also activate the corresponding category button (if any)
+                const matchingBtn = Array.from(categoryBtns).find(b => b.getAttribute('data-target') === targetId);
+                if (matchingBtn) {
+                    deactivateAllButtons();
+                    matchingBtn.classList.add('active');
+                }
+            }
+        });
+    });
+
+    // Handle all "Back to Categories" buttons
+    globalBackBtns.forEach(backBtn => {
+        backBtn.addEventListener('click', () => {
+            hideAllSections();
+            deactivateAllButtons();
+            // Optionally scroll back to the category buttons
+            document.querySelector('.category-buttons').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // Initialize: all sections hidden, no active button
+    hideAllSections();
+    deactivateAllButtons();
+
+    // LIGHTBOX (single image)
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeModalBtn = document.querySelector(".close-btn");
+    document.addEventListener("click", function(e) {
+        const img = e.target.closest(".card img");
+        // only if not part of multi-image card (which has onclick)
+        if (img && !img.closest("[onclick]")) {
+            e.preventDefault();
+            e.stopPropagation();
+            modalImg.src = img.src;
+            modal.classList.add("show");
+        }
+    });
+    closeModalBtn.addEventListener("click", () => modal.classList.remove("show"));
+    modal.addEventListener("click", (e) => { if (e.target === modal) modal.classList.remove("show"); });
+
+    // MULTI-IMAGE PREVIEW
+    const multiModal = document.getElementById("multiImageModal");
+    const multiMain = document.getElementById("multiMainImg");
+    const thumbContainer = document.getElementById("multiThumbContainer");
+    window.showMultiImagePreview = function(imageArray) {
+        if (!imageArray || imageArray.length === 0) return;
+        multiMain.src = imageArray[0];
+        thumbContainer.innerHTML = "";
+        imageArray.forEach((src) => {
+            const thumb = document.createElement("img");
+            thumb.src = src;
+            thumb.alt = "thumb";
+            thumb.addEventListener("click", () => { multiMain.src = src; });
+            thumbContainer.appendChild(thumb);
+        });
+        multiModal.style.display = "flex";
+    };
+    window.closeMultiImagePreview = function() { multiModal.style.display = "none"; };
+    multiModal.addEventListener("click", function(e) { if (e.target === multiModal) closeMultiImagePreview(); });
+</script>
+</body>
+</html>
