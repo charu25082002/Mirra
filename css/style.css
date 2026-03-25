@@ -49,7 +49,7 @@ body {
   position: absolute;
   top: 50%;
   right: -5px;
-  background-color: #24d278;
+  background-color: #b01736;
   -webkit-transform: translate(100%, -50%);
           transform: translate(100%, -50%);
 }
@@ -1093,7 +1093,7 @@ a:focus {
     text-align: center;
     font-size: 36px;
     margin-bottom: 30px;
-    color: #c71313;
+    color: #b01736;
 }
 
 /* Paragraph for the intro section */
@@ -1270,7 +1270,7 @@ a:focus {
 }
 
 .star {
-  color: #FFD700;
+  color: #b01736;
   font-size: 18px;
 }
 
@@ -1520,7 +1520,7 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
       font-size: 1.1rem;
     }
     .price-tag {
-      color: green;
+      color: #b01736;
       font-weight: bold;
     }
 
@@ -1639,7 +1639,7 @@ box-shadow: rgba(222, 37, 4, 0.912) 0px 1px 2px 0px, rgba(236, 69, 3, 0.962) 0px
 
 
 .star {
-  color: #ffd700; /* Gold color for filled stars */
+  color: #b01736; /* Gold color for filled stars */
   font-size: 18px;
 }
 
